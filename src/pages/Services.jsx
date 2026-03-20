@@ -9,9 +9,9 @@ const Services = () => {
   );
 
   const categories = [
-    {
-      id: "cyber",
-      title: "Cyber & Sécurité",
+    /*{
+      id: "maintenance",
+      title: "Maintenance Informatique",
       icon: "shield",
       color: "blue",
       items: [
@@ -20,7 +20,7 @@ const Services = () => {
         { name: "Audit d'impression", desc: "Sécurisation de vos périphériques de sortie." },
         { name: "Protection Endpoint", desc: "Sécurisation des postes de travail et mobiles." }
       ]
-    },
+    }*/,
     {
       id: "formation",
       title: "Pôle Formation",
@@ -29,8 +29,6 @@ const Services = () => {
       items: [
         { name: "Bureautique (Office)", desc: "Maîtrise complète de Word, Excel, PowerPoint." },
         { name: "Initiation Informatique", desc: "Pour débutants souhaitant découvrir l'outil numérique." },
-        { name: "Cyber-hygiène", desc: "Bonnes pratiques pour se protéger des menaces quotidiennes." },
-        { name: "Outils Collaboratifs", desc: "Transition vers Teams, Slack ou Google Workspace." }
       ]
     },
     {
@@ -39,8 +37,8 @@ const Services = () => {
       icon: "computer",
       color: "green",
       items: [
-        { name: "Création de sites Web", desc: "Design moderne, responsive et optimisé SEO." },
-        { name: "Maintenance applicative", desc: "Mise à jour et dépannage de vos solutions logicielles." },
+        { name: "Installation système", desc: "Design moderne, responsive et optimisé SEO." },
+        { name: "Maintenance Technique", desc: "Mise à jour et dépannage de vos solutions logicielles." },
         { name: "Infogérance", desc: "Externalisation de la gestion de votre parc informatique." },
         { name: "Assistance technique", desc: "Soutien réactif pour vos problèmes du quotidien." }
       ]
@@ -58,7 +56,7 @@ const Services = () => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 0.98 }}
@@ -67,7 +65,7 @@ const Services = () => {
       {/* Header */}
       <section className="bg-white py-24 shadow-sm relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -75,7 +73,7 @@ const Services = () => {
           >
             Nos Solutions <span className="text-primary italic">Sur-Mesure</span>
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -84,21 +82,21 @@ const Services = () => {
             Des services packagés ou à la carte pour répondre précisement aux enjeux de votre structure.
           </motion.p>
           <div className="flex justify-center gap-6 text-sm font-bold uppercase tracking-widest text-gray-400">
-             {[
-               { icon: "bolt", color: "text-primary", label: "Rapide" },
-               { icon: "track_changes", color: "text-accent-orange", label: "Ciblé" },
-               { icon: "database", color: "text-accent-green", label: "Sécurisé" }
-             ].map((feature, i) => (
-                <motion.span 
-                  key={i} 
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 + i * 0.1 }}
-                  className="flex items-center gap-2"
-                >
-                  <Icon name={feature.icon} className={feature.color} size="18px" /> {feature.label}
-                </motion.span>
-             ))}
+            {[
+              { icon: "bolt", color: "text-primary", label: "Rapide" },
+              { icon: "track_changes", color: "text-accent-orange", label: "Ciblé" },
+              { icon: "database", color: "text-accent-green", label: "Sécurisé" }
+            ].map((feature, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 + i * 0.1 }}
+                className="flex items-center gap-2"
+              >
+                <Icon name={feature.icon} className={feature.color} size="18px" /> {feature.label}
+              </motion.span>
+            ))}
           </div>
         </div>
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent-orange to-accent-green opacity-20"></div>
@@ -109,7 +107,7 @@ const Services = () => {
         <div className="space-y-32">
           {categories.map((cat, idx) => (
             <div key={cat.id} className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -130,10 +128,10 @@ const Services = () => {
                   <motion.button whileHover={{ backgroundColor: "white" }} className="text-primary font-bold px-8 py-3 rounded-xl border border-primary/20 hover:bg-white transition-all">Brochure</motion.button>
                 </div>
               </motion.div>
-              
+
               <div className="lg:col-span-1 border-r border-gray-200 hidden lg:block h-full"></div>
 
-              <motion.div 
+              <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
@@ -141,7 +139,7 @@ const Services = () => {
                 className="lg:col-span-6 grid grid-cols-1 md:grid-cols-2 gap-8"
               >
                 {cat.items.map((item, i) => (
-                  <motion.div 
+                  <motion.div
                     key={i}
                     variants={itemVariants}
                     whileHover={{ y: -5, borderColor: "#2563EB" }}
@@ -161,14 +159,14 @@ const Services = () => {
       </section>
 
       {/* FAQ Link */}
-      <motion.section 
+      <motion.section
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         className="bg-white border-t border-gray-100 py-16 text-center"
       >
         <p className="text-gray-500 mb-6">Vous avez un besoin spécifique qui ne figure pas ici ?</p>
-        <motion.button 
+        <motion.button
           whileHover={{ scale: 1.05 }}
           className="bg-secondary-dark text-white px-10 py-4 rounded-2xl font-bold flex items-center gap-2 mx-auto hover:bg-black transition-all group"
         >

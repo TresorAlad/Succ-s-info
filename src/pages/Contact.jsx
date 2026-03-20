@@ -103,7 +103,7 @@ const Contact = () => {
                 ></iframe>
                 <div className="absolute top-4 left-4 z-10 pointer-events-none">
                   <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl shadow-lg border border-white/20">
-                    <p className="text-xs font-bold text-secondary-dark uppercase tracking-wider mb-0.5">Notre Siège</p>
+                    <p className="text-xs font-bold text-secondary-dark uppercase tracking-wider mb-0.5">Notre Bureau</p>
                     <p className="text-primary font-bold">LE SUCCES INFORMATIQUE</p>
                   </div>
                 </div>

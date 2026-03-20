@@ -25,13 +25,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-5">
               <a href="#" className="hover:text-primary transition-colors text-gray-400 flex items-center gap-1">
-                <Icon name="public" size="20px" /> <span className="text-xs font-bold uppercase tracking-tighter">LI</span>
-              </a>
-              <a href="#" className="hover:text-primary transition-colors text-gray-400 flex items-center gap-1">
-                <Icon name="share" size="20px" /> <span className="text-xs font-bold uppercase tracking-tighter">FB</span>
-              </a>
-              <a href="#" className="hover:text-primary transition-colors text-gray-400 flex items-center gap-1">
-                 <Icon name="alternate_email" size="20px" /> <span className="text-xs font-bold uppercase tracking-tighter">X</span>
+                <Icon name="fb" size="20px" /> <span className="text-xs font-bold uppercase tracking-tighter">FB</span>
               </a>
             </div>
           </div>
@@ -53,7 +47,7 @@ const Footer = () => {
             <ul className="space-y-5">
               <li className="flex items-start gap-3">
                 <Icon name="location_on" className="text-primary shrink-0" size="22px" />
-                <span className="text-gray-400 text-sm">123 Avenue de la République, Togo</span>
+                <span className="text-gray-400 text-sm">Hahotoé, Togo</span>
               </li>
               <li className="flex items-center gap-3">
                 <Icon name="call" className="text-primary shrink-0" size="22px" />

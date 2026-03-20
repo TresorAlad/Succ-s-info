@@ -20,7 +20,7 @@ const Home = () => {
   );
 
   return (
-    <motion.div 
+    <motion.div
       initial="hidden"
       animate="visible"
       exit={{ opacity: 0, y: -20 }}
@@ -32,10 +32,10 @@ const Home = () => {
           <div className="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full blur-[120px] animate-pulse"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-orange rounded-full blur-[150px] animate-pulse delay-700"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
@@ -62,8 +62,8 @@ const Home = () => {
                 </Link>
               </div>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
@@ -81,11 +81,11 @@ const Home = () => {
                 </div>
                 <div className="space-y-4">
                   <div className="h-3 bg-white/10 rounded-full overflow-hidden">
-                    <motion.div 
-                       initial={{ width: 0 }}
-                       animate={{ width: "80%" }}
-                       transition={{ duration: 1.5, delay: 0.5 }}
-                       className="h-full bg-accent-green"
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: "80%" }}
+                      transition={{ duration: 1.5, delay: 0.5 }}
+                      className="h-full bg-accent-green"
                     ></motion.div>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
@@ -109,7 +109,7 @@ const Home = () => {
       {/* Services Section */}
       <section className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -122,7 +122,7 @@ const Home = () => {
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -130,13 +130,13 @@ const Home = () => {
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
             {[
-              {
+              /*{
                 title: "Maintenance Informatique",
                 description: "Audits, scans de vulnérabilité, protection de terminaux et sécurisation de réseaux.",
                 icon: "shield",
                 color: "bg-blue-50",
                 features: ["Audit complet", "Scan vulnérabilités", "Réponse incidents"]
-              },
+              }*/,
               {
                 title: "Formation IT",
                 description: "Formations bureautiques, initiation informatique et perfectionnement professionnel.",
@@ -145,14 +145,14 @@ const Home = () => {
                 features: ["Pack Office", "Initiation Web", "Cyber-hygiène"]
               },
               {
-                title: "Support IT",
-                description: "Création de sites internet, maintenance technique et conseil stratégique.",
+                title: "Prestations Informatiques",
+                description: "Installation système, maintenance technique et conseil stratégique.",
                 icon: "computer",
                 color: "bg-green-50",
                 features: ["Sites vitrines", "SEO optimisé", "Maintenance 24/7"]
               }
             ].map((service, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 variants={itemVariants}
                 whileHover={{ y: -10, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1)" }}
@@ -184,7 +184,7 @@ const Home = () => {
 
       {/* CTA Section */}
       <section className="py-24 bg-primary text-white text-center overflow-hidden relative">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}

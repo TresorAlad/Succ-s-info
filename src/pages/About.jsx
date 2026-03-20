@@ -5,9 +5,9 @@ import Counter from '../components/Counter';
 const About = () => {
   const stats = [
     { label: "Années d'expérience", value: "10+" },
-    { label: "Projets réussis", value: "500+" },
+    { label: "Projets réussis", value: "200+" },
     { label: "Formations certifiées", value: "1200+" },
-    { label: "Partenaires IT", value: "50+" },
+    /*{ label: "Partenaires IT", value: "50+" },*/
   ];
 
   const fadeUp = {
@@ -24,7 +24,7 @@ const About = () => {
   );
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, y: -20 }}
@@ -52,7 +52,7 @@ const About = () => {
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-32">
-            <motion.div 
+            <motion.div
               {...fadeUp}
               className="relative"
             >
@@ -64,7 +64,7 @@ const About = () => {
                   <span className="text-lg font-medium opacity-80 uppercase tracking-widest">Ans d'Innovation</span>
                 </div>
               </div>
-              <motion.div 
+              <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute -bottom-6 -right-6 bg-primary p-12 rounded-2xl shadow-2xl hidden md:block flex items-center justify-center"
@@ -72,8 +72,8 @@ const About = () => {
                 <Icon name="shield" size="48px" className="text-white" />
               </motion.div>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -82,7 +82,7 @@ const About = () => {
               <span className="text-primary font-bold uppercase tracking-widest mb-4 block">Qui sommes-nous ?</span>
               <h2 className="text-4xl font-display font-bold text-secondary-dark mb-8 leading-tight">Expertise, Confiance et Transmission</h2>
               <p className="text-gray-500 mb-8 text-lg leading-relaxed">
-                Le CyberSuccess est né de la volonté de rendre les outils numériques et la cybersécurité accessibles à tous. Nous croyons que la technologie doit être un levier de croissance, non un frein ou un risque.
+                Le Succès Informatique est né de la volonté de rendre les outils numériques accessibles à tous. Nous croyons que la technologie doit être un levier de croissance, non un frein ou un risque.
               </p>
               <div className="space-y-6">
                 {[
@@ -90,8 +90,8 @@ const About = () => {
                   { title: "Pédagogie Positive", desc: "Des formations adaptées à chaque niveau pour une montée en compétences efficace.", icon: "track_changes" },
                   { title: "Service Premium", desc: "Un accompagnement sur-mesure et réactif pour chaque projet.", icon: "visibility" }
                 ].map((item, i) => (
-                  <motion.div 
-                    key={i} 
+                  <motion.div
+                    key={i}
                     whileHover={{ scale: 1.02, x: 10 }}
                     transition={{ type: "spring", stiffness: 300 }}
                     className="flex gap-4 items-start p-6 bg-white border border-gray-100 rounded-2xl hover:border-primary transition-all group shadow-sm"
@@ -112,8 +112,8 @@ const About = () => {
           {/* Stats */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-32 bg-secondary-dark p-12 rounded-3xl shadow-xl border border-white/5">
             {stats.map((stat, i) => (
-              <motion.div 
-                key={i} 
+              <motion.div
+                key={i}
                 initial={{ opacity: 0, scale: 0.5 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -129,7 +129,7 @@ const About = () => {
           </div>
 
           {/* Vision Section */}
-          <motion.div 
+          <motion.div
             {...fadeUp}
             className="bg-blue-50 rounded-3xl p-16 relative overflow-hidden"
           >
@@ -137,12 +137,12 @@ const About = () => {
               <div>
                 <h2 className="text-4xl font-display font-bold text-secondary-dark mb-6">Notre Vision 2030</h2>
                 <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                  Devenir le pôle de référence en cybersécurité et formation numérique au niveau régional, en créant un ecosystème technologique sûr et performant pour chacun.
+                  Devenir le pôle de référence en formation numérique au niveau régional, en créant un ecosystème technologique sûr et performant pour chacun.
                 </p>
                 <ul className="space-y-4">
                   {["Expansion régionale", "Nouveaux pôles de formation", "Services IA avancés"].map((text, i) => (
-                    <motion.li 
-                      key={i} 
+                    <motion.li
+                      key={i}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 + i * 0.1 }}
@@ -155,23 +155,23 @@ const About = () => {
                 </ul>
               </div>
               <div className="flex justify-center">
-                <motion.div 
+                <motion.div
                   initial={{ rotate: 10, scale: 0.9 }}
                   whileInView={{ rotate: 3, scale: 1 }}
                   transition={{ duration: 1 }}
                   className="bg-white p-8 rounded-3xl shadow-xl w-full max-w-sm border border-blue-100"
                 >
-                   <div className="flex items-center gap-4 mb-6">
-                      <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                        <Icon name="groups" className="text-white" size="24px" />
-                      </div>
-                      <span className="font-bold text-lg">Écosystème Partenaires</span>
-                   </div>
-                   <div className="space-y-3 opacity-60">
-                      <div className="h-3 bg-gray-100 rounded-full w-full"></div>
-                      <div className="h-3 bg-gray-100 rounded-full w-3/4"></div>
-                      <div className="h-3 bg-gray-100 rounded-full w-5/6"></div>
-                   </div>
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                      <Icon name="groups" className="text-white" size="24px" />
+                    </div>
+                    <span className="font-bold text-lg">Écosystème Partenaires</span>
+                  </div>
+                  <div className="space-y-3 opacity-60">
+                    <div className="h-3 bg-gray-100 rounded-full w-full"></div>
+                    <div className="h-3 bg-gray-100 rounded-full w-3/4"></div>
+                    <div className="h-3 bg-gray-100 rounded-full w-5/6"></div>
+                  </div>
                 </motion.div>
               </div>
             </div>
