@@ -9,50 +9,52 @@ const Services = () => {
   );
 
   const categories = [
-    /*{
+    {
       id: "maintenance",
       title: "Maintenance Informatique",
-      icon: "shield",
+      icon: "settings_suggest",
       color: "blue",
       items: [
-        { name: "Audit de sécurité", desc: "Diagnostic complet de votre infrastructure numérique." },
-        { name: "Scan de vulnérabilité", desc: "Identification des failles logicielles et réseau." },
-        { name: "Audit d'impression", desc: "Sécurisation de vos périphériques de sortie." },
-        { name: "Protection Endpoint", desc: "Sécurisation des postes de travail et mobiles." }
+        { name: "Dépannage PC & Laptop", desc: "Diagnostic et réparation rapide de vos problèmes matériels et logiciels." },
+        { name: "Nettoyage & Optimisation", desc: "Améliorez les performances de vos ordinateurs pour un travail fluide." },
+        { name: "Installation Périphériques", desc: "Configuration d'imprimantes, scanners et autres accessoires." },
+        { name: "Récupération de Données", desc: "Aide à la récupération de fichiers perdus ou supprimés par erreur." }
       ]
-    }*/,
+    },
     {
       id: "formation",
-      title: "Pôle Formation",
-      icon: "menu_book",
+      title: "Formation Bureautique",
+      icon: "history_edu",
       color: "orange",
       items: [
-        { name: "Bureautique (Office)", desc: "Maîtrise complète de Word, Excel, PowerPoint." },
-        { name: "Initiation Informatique", desc: "Pour débutants souhaitant découvrir l'outil numérique." },
+        { name: "Initiation Informatique", desc: "Apprenez les bases de l'ordinateur de A à Z sans stress." },
+        { name: "Maîtrise du Pack Office", desc: "Formations intensives sur Word, Excel et PowerPoint pour les pros." },
+        { name: "Internet & Recherche", desc: "Naviguez en toute sécurité et trouvez l'information efficacement." },
+        { name: "Emails & Communication", desc: "Créez et gérez vos comptes e-mails professionnels facilement." }
       ]
     },
     {
       id: "it",
       title: "Prestations Informatiques",
-      icon: "computer",
+      icon: "laptop_mac",
       color: "green",
       items: [
-        { name: "Installation système", desc: "Design moderne, responsive et optimisé SEO." },
-        { name: "Maintenance Technique", desc: "Mise à jour et dépannage de vos solutions logicielles." },
-        { name: "Infogérance", desc: "Externalisation de la gestion de votre parc informatique." },
-        { name: "Assistance technique", desc: "Soutien réactif pour vos problèmes du quotidien." }
+        { name: "Vente de Matériel", desc: "Conseils et vente d'équipements informatiques neufs et d'occasion." },
+        { name: "Création Web Vitrine", desc: "Présentez votre activité au monde avec un site élégant et moderne." },
+        { name: "Support à Distance", desc: "Assistance rapide par prise de main à distance pour vos urgences." },
+        { name: "Conseils & Stratégie", desc: "Accompagnement dans le choix de vos futures solutions numériques." }
       ]
     }
   ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+    visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
+    hidden: { opacity: 0, scale: 0.9, y: 20 },
+    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
   };
 
   return (
@@ -63,73 +65,74 @@ const Services = () => {
       className="bg-secondary-light min-h-screen"
     >
       {/* Header */}
-      <section className="bg-white py-24 shadow-sm relative overflow-hidden">
+      <section className="bg-white py-24 lg:py-32 shadow-sm relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_10%_20%,rgba(37,99,235,0.05)_0%,transparent_50%)]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-5xl font-display font-extrabold text-secondary-dark mb-6"
+            className="text-5xl lg:text-7xl font-display font-extrabold text-secondary-dark mb-8"
           >
-            Nos Solutions <span className="text-primary italic">Sur-Mesure</span>
+            Nos Services <span className="text-primary italic">Informatiques</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed font-medium"
+            className="text-xl text-gray-500 max-w-3xl mx-auto mb-12 leading-relaxed font-medium"
           >
-            Des services packagés ou à la carte pour répondre précisement aux enjeux de votre structure.
+            Un accompagnement complet pour vos besoins quotidiens : de la réparation de votre matériel à votre formation continue.
           </motion.p>
-          <div className="flex justify-center gap-6 text-sm font-bold uppercase tracking-widest text-gray-400">
+          <div className="flex justify-center gap-8 text-sm font-bold uppercase tracking-[0.2em] text-gray-400">
             {[
-              { icon: "bolt", color: "text-primary", label: "Rapide" },
-              { icon: "track_changes", color: "text-accent-orange", label: "Ciblé" },
-              { icon: "database", color: "text-accent-green", label: "Sécurisé" }
+              { icon: "verified", color: "text-primary", label: "Expertise" },
+              { icon: "schedule", color: "text-accent-orange", label: "Disponibilité" },
+              { icon: "thumb_up", color: "text-accent-green", label: "Satisfaction" }
             ].map((feature, i) => (
               <motion.span
                 key={i}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5 + i * 0.1 }}
-                className="flex items-center gap-2"
+                className="flex items-center gap-3"
               >
-                <Icon name={feature.icon} className={feature.color} size="18px" /> {feature.label}
+                <Icon name={feature.icon} className={feature.color} size="20px" /> {feature.label}
               </motion.span>
             ))}
           </div>
         </div>
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent-orange to-accent-green opacity-20"></div>
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-blue-400 to-accent-green opacity-30"></div>
       </section>
 
       {/* Services Grid */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-32">
+        <div className="space-y-40">
           {categories.map((cat, idx) => (
-            <div key={cat.id} className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            <div key={cat.id} id={cat.id} className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
               <motion.div
-                initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
+                initial={{ opacity: 0, x: idx % 2 === 0 ? -40 : 40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8 }}
-                className="lg:col-span-5 sticky top-28"
+                className={`${idx % 2 !== 0 ? 'lg:order-last' : ''} lg:col-span-5 sticky top-32`}
               >
-                <div className={`w-20 h-20 bg-white rounded-3xl shadow-xl flex items-center justify-center mb-10 border border-gray-50`}>
-                  <Icon name={cat.icon} className="text-primary" size="40px" />
+                <div className="w-24 h-24 bg-white rounded-3xl shadow-xl flex items-center justify-center mb-10 border border-gray-100 rotate-3 transform group hover:rotate-0 transition-transform">
+                  <Icon name={cat.icon} className="text-primary text-secondary-dark" size="48px" />
                 </div>
-                <h2 className="text-4xl font-display font-extrabold text-secondary-dark mb-6">{cat.title}</h2>
-                <p className="text-gray-500 text-lg leading-relaxed mb-8">
-                  Nous mettons à votre disposition les meilleurs experts pour vous garantir un résultat irréprochable et durable dans le domaine de la {cat.title.toLowerCase()}.
+                <h2 className="text-4xl lg:text-5xl font-display font-extrabold text-secondary-dark mb-8 leading-tight">{cat.title}</h2>
+                <p className="text-gray-500 text-lg leading-relaxed mb-10">
+                  Solutions dédiées à la <span className="text-primary font-bold">{cat.title.toLowerCase()}</span> pour vous garantir un environnement numérique stable et performant.
                 </p>
-                <div className="flex gap-4">
-                  <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="bg-primary text-white px-8 py-3 rounded-xl font-bold hover:shadow-lg transition-all active:scale-95 flex items-center gap-2">
-                    <Icon name="event_available" size="20px" /> Prendre RDV
+                <div className="flex flex-wrap gap-4">
+                  <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="bg-primary text-white px-10 py-4 rounded-2xl font-bold shadow-lg shadow-blue-500/20 hover:shadow-xl transition-all active:scale-95 flex items-center gap-3">
+                    <Icon name="event_available" size="24px" /> Devis Express
                   </motion.button>
-                  <motion.button whileHover={{ backgroundColor: "white" }} className="text-primary font-bold px-8 py-3 rounded-xl border border-primary/20 hover:bg-white transition-all">Brochure</motion.button>
+                  <motion.button whileHover={{ backgroundColor: "white", borderColor: "#2563EB" }} className="text-primary font-bold px-10 py-4 rounded-2xl border-2 border-primary/20 hover:border-primary transition-all">Consulter Brochure</motion.button>
                 </div>
               </motion.div>
 
-              <div className="lg:col-span-1 border-r border-gray-200 hidden lg:block h-full"></div>
+              <div className="lg:col-span-1 hidden lg:block h-full border-r border-dashed border-gray-200"></div>
 
               <motion.div
                 variants={containerVariants}
@@ -142,14 +145,15 @@ const Services = () => {
                   <motion.div
                     key={i}
                     variants={itemVariants}
-                    whileHover={{ y: -5, borderColor: "#2563EB" }}
-                    className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all"
+                    whileHover={{ y: -8, borderColor: "#2563EB", boxShadow: "0 20px 40px rgba(0,0,0,0.06)" }}
+                    className="bg-white p-10 rounded-[2.5rem] border border-gray-100 transition-all group"
                   >
-                    <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center mb-6">
-                      <Icon name="check_circle" className="text-primary" size="24px" />
+                    <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center mb-8 group-hover:bg-primary transition-colors duration-500">
+                      <Icon name="verified" className="text-primary group-hover:text-white transition-colors" size="28px" />
                     </div>
-                    <h3 className="text-xl font-bold mb-3">{item.name}</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                    <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">{item.name}</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed mb-6">{item.desc}</p>
+                    <div className="h-1 w-12 bg-gray-100 rounded-full group-hover:w-24 group-hover:bg-primary transition-all duration-500"></div>
                   </motion.div>
                 ))}
               </motion.div>
@@ -158,20 +162,24 @@ const Services = () => {
         </div>
       </section>
 
-      {/* FAQ Link */}
+      {/* CTA Section */}
       <motion.section
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="bg-white border-t border-gray-100 py-16 text-center"
+        className="bg-secondary-dark text-white py-24 text-center relative overflow-hidden"
       >
-        <p className="text-gray-500 mb-6">Vous avez un besoin spécifique qui ne figure pas ici ?</p>
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          className="bg-secondary-dark text-white px-10 py-4 rounded-2xl font-bold flex items-center gap-2 mx-auto hover:bg-black transition-all group"
-        >
-          Discuter avec un expert <Icon name="arrow_forward" className="group-hover:translate-x-2 transition-transform" />
-        </motion.button>
+        <div className="absolute top-0 left-0 w-64 h-64 bg-primary/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="max-w-4xl mx-auto px-4 relative z-10">
+          <h2 className="text-3xl lg:text-4xl font-display font-bold mb-8">Un besoin spécifique sur-mesure ?</h2>
+          <p className="text-gray-400 mb-10 text-lg">Nos experts sont prêts à concevoir la solution idéale pour votre architecture.</p>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            className="bg-white text-secondary-dark px-12 py-5 rounded-2xl font-bold text-lg flex items-center gap-3 mx-auto hover:shadow-2xl transition-all group"
+          >
+            Parler à un Spécialiste <Icon name="support_agent" className="group-hover:rotate-12 transition-transform" size="24px" />
+          </motion.button>
+        </div>
       </motion.section>
     </motion.div>
   );

@@ -9,52 +9,53 @@ const Footer = () => {
   );
 
   return (
-    <footer className="bg-secondary-dark text-white pt-20 pb-10">
+    <footer className="footer-container bg-secondary-dark text-white pt-12 pb-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-8">
           {/* Brand */}
           <div>
-            <Link to="/" className="flex items-center gap-2 mb-6">
+            <Link to="/" className="flex items-center gap-2 mb-4">
               <div className="bg-primary p-1.5 rounded-lg">
-                <Icon name="shield" className="text-white" size="24px" />
+                <Icon name="terminal" className="text-white" size="20px" />
               </div>
-              <span className="text-2xl font-display font-bold text-white tracking-tight">Succes<span className="text-primary">Info</span></span>
+              <span className="text-xl font-display font-bold text-white tracking-tight">Succes<span className="text-primary focus:outline-none">Info</span></span>
             </Link>
-            <p className="text-gray-400 mb-8 max-w-sm leading-relaxed">
-              Votre partenaire de confiance pour la formation informatique et la transition numérique de votre entreprise.
+            <p className="text-gray-400 mb-6 max-w-sm leading-relaxed text-sm">
+              Maintenance informatique et formation bureautique d'excellence.
             </p>
             <div className="flex space-x-5">
-              <a href="#" className="hover:text-primary transition-colors text-gray-400 flex items-center gap-1">
-                <Icon name="fb" size="20px" /> <span className="text-xs font-bold uppercase tracking-tighter">FB</span>
+              <a href="#" className="hover:text-primary transition-all text-gray-400 flex items-center gap-3 bg-white/5 p-2 px-4 rounded-xl border border-white/10 hover:border-primary/50 group">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/2023_Facebook_icon.svg" alt="Facebook" className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white group-hover:text-primary transition-colors">Facebook</span>
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-6">Liens Rapides</h4>
-            <ul className="space-y-4">
-              <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Accueil</Link></li>
-              <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">À propos</Link></li>
-              <li><Link to="/services" className="text-gray-400 hover:text-white transition-colors">Nos Services</Link></li>
-              <li><Link to="/portfolio" className="text-gray-400 hover:text-white transition-colors">Portfolio</Link></li>
+            <h4 className="text-base font-bold mb-4">Liens Rapides</h4>
+            <ul className="space-y-2">
+              <li><Link to="/" className="text-gray-400 hover:text-white transition-colors text-sm">Accueil</Link></li>
+              <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors text-sm">À propos</Link></li>
+              <li><Link to="/services" className="text-gray-400 hover:text-white transition-colors text-sm">Nos Services</Link></li>
+              <li><Link to="/portfolio" className="text-gray-400 hover:text-white transition-colors text-sm">Portfolio</Link></li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-bold mb-6">Contact</h4>
-            <ul className="space-y-5">
+            <h4 className="text-base font-bold mb-4">Contact</h4>
+            <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <Icon name="location_on" className="text-primary shrink-0" size="22px" />
+                <Icon name="location_on" className="text-primary shrink-0" size="18px" />
                 <span className="text-gray-400 text-sm">Hahotoé, Togo</span>
               </li>
               <li className="flex items-center gap-3">
-                <Icon name="call" className="text-primary shrink-0" size="22px" />
+                <Icon name="call" className="text-primary shrink-0" size="18px" />
                 <span className="text-gray-400 text-sm">+228 99 99 00 00</span>
               </li>
               <li className="flex items-center gap-3">
-                <Icon name="mail" className="text-primary shrink-0" size="22px" />
+                <Icon name="mail" className="text-primary shrink-0" size="18px" />
                 <span className="text-gray-400 text-sm">contact@succesinfo.tg</span>
               </li>
             </ul>
@@ -62,23 +63,25 @@ const Footer = () => {
 
           {/* Newsletter */}
           <div>
-            <h4 className="text-lg font-bold mb-6">Newsletter</h4>
-            <p className="text-gray-400 mb-6 text-sm">Abonnez-vous pour recevoir nos actualités cyber.</p>
-            <form className="flex flex-col space-y-3">
-              <input
-                type="email"
-                placeholder="Votre email"
-                className="bg-gray-800 border-gray-700 text-white px-4 py-3 rounded-xl focus:ring-2 focus:ring-primary focus:outline-none placeholder-gray-500 text-sm"
-              />
-              <button className="bg-primary hover:bg-blue-700 text-white py-3 rounded-xl font-medium transition-colors flex items-center justify-center gap-2">
-                <Icon name="notifications" size="20px" /> S'abonner
-              </button>
-            </form>
+            <h4 className="text-base font-bold mb-4">Newsletter</h4>
+            <div className="space-y-4">
+              <p className="text-gray-400 text-xs leading-relaxed">Recevez nos astuces et actualités.</p>
+              <form className="flex flex-col space-y-2">
+                <input
+                  type="email"
+                  placeholder="Votre email"
+                  className="bg-white/5 border border-white/10 text-white px-4 py-2 rounded-xl focus:ring-1 focus:ring-primary focus:outline-none placeholder-gray-500 text-sm w-full"
+                />
+                <button className="bg-primary hover:bg-blue-700 text-white py-2.5 rounded-xl font-bold text-[10px] uppercase tracking-widest transition-all flex items-center justify-center gap-2">
+                  <Icon name="notifications" size="16px" /> S'abonner
+                </button>
+              </form>
+            </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-10 text-center">
-          <p className="text-gray-500 text-sm">
+        <div className="border-t border-gray-100/10 pt-6 text-center">
+          <p className="text-gray-500 text-[10px] uppercase tracking-[0.1em]">
             © {new Date().getFullYear()} SucessInfo. Tous droits réservés. Mentions Légales | Confidentialité
           </p>
         </div>
