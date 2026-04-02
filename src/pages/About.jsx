@@ -7,7 +7,6 @@ const About = () => {
     { label: "Années d'expérience", value: "10+" },
     { label: "Projets réussis", value: "200+" },
     { label: "Formations certifiées", value: "1200+" },
-    /*{ label: "Partenaires IT", value: "50+" },*/
   ];
 
   const fadeUp = {

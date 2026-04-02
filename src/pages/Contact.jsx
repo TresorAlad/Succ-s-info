@@ -61,9 +61,9 @@ const Contact = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                { label: "Email Professionnel", info: "contact@succesinfo.tg", icon: "alternate_email", color: "text-primary", desc: "Support client & Devis" },
-                { label: "Ligne Directe", info: "+228 99 99 00 00", icon: "phone_iphone", color: "text-accent-orange", desc: "Lun-Sam (8h-18h)" },
-                { label: "Siège Social", info: "Hahotoé, Togo", icon: "distance", color: "text-accent-green", desc: "Près de la Poste" },
+                { label: "Email Professionnel", info: "succesinfo9@gmail.com", icon: "alternate_email", color: "text-primary", desc: "Support client & Devis" },
+                { label: "Ligne Directe", info: "+228 98 10 70 15", icon: "phone_iphone", color: "text-accent-orange", desc: "Lun-Sam (8h-18h)" },
+                { label: "Siège Social", info: "Hahotoé, Togo", icon: "distance", color: "text-accent-green", desc: "Près du Lycée Hahotoé" },
                 { label: "Assistance IT", info: "Support Réactif", icon: "support_agent", color: "text-blue-500", desc: "Dépannage à distance" }
               ].map((item, i) => (
                 <motion.div

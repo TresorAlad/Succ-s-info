@@ -52,11 +52,11 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Icon name="call" className="text-primary shrink-0" size="18px" />
-                <span className="text-gray-400 text-sm">+228 99 99 00 00</span>
+                <span className="text-gray-400 text-sm">+228 98 10 70 15</span>
               </li>
               <li className="flex items-center gap-3">
                 <Icon name="mail" className="text-primary shrink-0" size="18px" />
-                <span className="text-gray-400 text-sm">contact@succesinfo.tg</span>
+                <span className="text-gray-400 text-sm">succesinfo9@gmail.com</span>
               </li>
             </ul>
           </div>
