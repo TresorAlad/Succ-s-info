@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const Services = () => {
@@ -19,6 +20,9 @@ const Services = () => {
         { name: "Nettoyage & Optimisation", desc: "Améliorez les performances de vos ordinateurs pour un travail fluide." },
         { name: "Installation Périphériques", desc: "Configuration d'imprimantes, scanners et autres accessoires." },
         { name: "Récupération de Données", desc: "Aide à la récupération de fichiers perdus ou supprimés par erreur." }
+      ],
+      buttons: [
+        { label: "Demander un Devis", icon: "event_available", to: "/contact", primary: true }
       ]
     },
     {
@@ -31,6 +35,10 @@ const Services = () => {
         { name: "Maîtrise du Pack Office", desc: "Formations intensives sur Word, Excel et PowerPoint pour les pros." },
         { name: "Internet & Recherche", desc: "Naviguez en toute sécurité et trouvez l'information efficacement." },
         { name: "Emails & Communication", desc: "Créez et gérez vos comptes e-mails professionnels facilement." }
+      ],
+      buttons: [
+        { label: "Me former", icon: "school", to: "/formation", primary: true },
+        { label: "Demander un Devis", icon: "event_available", to: "/contact", primary: false }
       ]
     },
     {
@@ -43,6 +51,9 @@ const Services = () => {
         { name: "Création Web Vitrine", desc: "Présentez votre activité au monde avec un site élégant et moderne." },
         { name: "Support à Distance", desc: "Assistance rapide par prise de main à distance pour vos urgences." },
         { name: "Conseils & Stratégie", desc: "Accompagnement dans le choix de vos futures solutions numériques." }
+      ],
+      buttons: [
+        { label: "Demander un Devis", icon: "event_available", to: "/contact", primary: true }
       ]
     }
   ];
@@ -72,7 +83,7 @@ const Services = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-5xl lg:text-7xl font-display font-extrabold text-secondary-dark mb-8"
+            className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-secondary-dark mb-8"
           >
             Nos Services <span className="text-primary italic">Informatiques</span>
           </motion.h1>
@@ -120,15 +131,24 @@ const Services = () => {
                 <div className="w-24 h-24 bg-white rounded-3xl shadow-xl flex items-center justify-center mb-10 border border-gray-100 rotate-3 transform group hover:rotate-0 transition-transform">
                   <Icon name={cat.icon} className="text-primary text-secondary-dark" size="48px" />
                 </div>
-                <h2 className="text-4xl lg:text-5xl font-display font-extrabold text-secondary-dark mb-8 leading-tight">{cat.title}</h2>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-secondary-dark mb-8 leading-tight">{cat.title}</h2>
                 <p className="text-gray-500 text-lg leading-relaxed mb-10">
                   Solutions dédiées à la <span className="text-primary font-bold">{cat.title.toLowerCase()}</span> pour vous garantir un environnement numérique stable et performant.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="bg-primary text-white px-10 py-4 rounded-2xl font-bold shadow-lg shadow-blue-500/20 hover:shadow-xl transition-all active:scale-95 flex items-center gap-3">
-                    <Icon name="event_available" size="24px" /> Devis Express
-                  </motion.button>
-                  <motion.button whileHover={{ backgroundColor: "white", borderColor: "#2563EB" }} className="text-primary font-bold px-10 py-4 rounded-2xl border-2 border-primary/20 hover:border-primary transition-all">Consulter Brochure</motion.button>
+                  {cat.buttons.map((btn, bi) => (
+                    <motion.div key={bi} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      <Link
+                        to={btn.to}
+                        className={btn.primary
+                          ? "bg-primary text-white px-10 py-4 rounded-2xl font-bold shadow-lg shadow-blue-500/20 hover:shadow-xl transition-all active:scale-95 flex items-center gap-3"
+                          : "text-primary font-bold px-10 py-4 rounded-2xl border-2 border-primary/20 hover:border-primary hover:bg-white transition-all flex items-center gap-3"
+                        }
+                      >
+                        <Icon name={btn.icon} size="24px" /> {btn.label}
+                      </Link>
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
 
@@ -161,26 +181,6 @@ const Services = () => {
           ))}
         </div>
       </section>
-
-      {/* CTA Section */}
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="bg-secondary-dark text-white py-24 text-center relative overflow-hidden"
-      >
-        <div className="absolute top-0 left-0 w-64 h-64 bg-primary/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="max-w-4xl mx-auto px-4 relative z-10">
-          <h2 className="text-3xl lg:text-4xl font-display font-bold mb-8">Un besoin spécifique sur-mesure ?</h2>
-          <p className="text-gray-400 mb-10 text-lg">Nos experts sont prêts à concevoir la solution idéale pour votre architecture.</p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            className="bg-white text-secondary-dark px-12 py-5 rounded-2xl font-bold text-lg flex items-center gap-3 mx-auto hover:shadow-2xl transition-all group"
-          >
-            Parler à un Spécialiste <Icon name="support_agent" className="group-hover:rotate-12 transition-transform" size="24px" />
-          </motion.button>
-        </div>
-      </motion.section>
     </motion.div>
   );
 };

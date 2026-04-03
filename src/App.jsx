@@ -1,46 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import MainLayout from './layouts/MainLayout';
-import Home from './pages/Home';
-import NotAvailable from './pages/NotAvailable';
 import Loader from './components/Loader';
+import Home from './pages/Home';
+
+// Lazy load non-critical routes to speed up the initial website loading
+const About = lazy(() => import('./pages/About'));
+const Services = lazy(() => import('./pages/Services'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Formation = lazy(() => import('./pages/Formation'));
 
 function AnimatedRoutes() {
   const location = useLocation();
-  
+
   return (
     <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<Home />} />
-          <Route path="*" element={<NotAvailable />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={<Loader />}>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="services" element={<Services />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="formation" element={<Formation />} />
+          </Route>
+        </Routes>
+      </Suspense>
     </AnimatePresence>
   );
 }
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Initial loading delay (2 seconds)
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <Router>
-      <AnimatePresence>
-        {isLoading ? (
-          <Loader key="loader" />
-        ) : (
-          <AnimatedRoutes key="routes" />
-        )}
-      </AnimatePresence>
+      <AnimatedRoutes />
     </Router>
   );
 }

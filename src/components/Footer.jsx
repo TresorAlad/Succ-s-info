@@ -15,9 +15,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="bg-primary p-1.5 rounded-lg">
-                <Icon name="terminal" className="text-white" size="20px" />
-              </div>
+              <img src="/logo.png" alt="SuccesInfo Logo" className="w-8 h-8 object-contain bg-white rounded-lg p-1" />
               <span className="text-xl font-display font-bold text-white tracking-tight">Succes<span className="text-primary focus:outline-none">Info</span></span>
             </Link>
             <p className="text-gray-400 mb-6 max-w-sm leading-relaxed text-sm">
@@ -32,7 +30,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="hidden md:block">
             <h4 className="text-base font-bold mb-4">Liens Rapides</h4>
             <ul className="space-y-2">
               <li><Link to="/" className="text-gray-400 hover:text-white transition-colors text-sm">Accueil</Link></li>
@@ -62,7 +60,7 @@ const Footer = () => {
           </div>
 
           {/* Newsletter */}
-          <div>
+          <div className="hidden md:block">
             <h4 className="text-base font-bold mb-4">Newsletter</h4>
             <div className="space-y-4">
               <p className="text-gray-400 text-xs leading-relaxed">Recevez nos astuces et actualités.</p>

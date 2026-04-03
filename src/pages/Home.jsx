@@ -27,112 +27,101 @@ const Home = () => {
       className="overflow-hidden"
     >
       {/* Hero Section */}
-      <section className="relative min-h-[95vh] flex items-center bg-secondary-dark text-white pt-24 lg:pt-36 pb-20 lg:pb-0 overflow-hidden">
+      <section className="relative min-h-screen flex flex-col justify-center bg-secondary-dark text-white overflow-hidden">
         {/* Advanced Background Effects */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-primary/20 rounded-full blur-[140px] animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-full h-full bg-[radial-gradient(circle_at_70%_30%,rgba(37,99,235,0.08)_0%,transparent_60%)]"></div>
-          <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')]"></div>
+          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/15 rounded-full blur-[180px] animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[160px] animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[200px]"></div>
+          <div className="absolute inset-0 opacity-[0.02] bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')]"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="mt-8 lg:mt-0"
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center pt-28 lg:pt-13 pb-32">
+
+          {/* Title */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-black mb-8 leading-[1.05] tracking-tighter"
+          >
+            Votre Partenaire <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-primary italic">Expert en IT</span>
+          </motion.h1>
+
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-base lg:text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-medium leading-relaxed"
+          >
+            Optimisez votre infrastructure et formez vos équipes avec nos solutions sur-mesure en maintenance, bureautique et transformation digitale.
+          </motion.p>
+
+          {/* Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center items-center mb-10"
+          >
+            <Link
+              to="/services"
+              className="bg-primary hover:bg-blue-600 text-white px-10 py-4 rounded-full font-black text-[11px] uppercase tracking-widest flex items-center justify-center gap-3 transition-all shadow-xl shadow-blue-500/20 hover:shadow-2xl hover:shadow-blue-500/30"
             >
-              <motion.div 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="inline-flex items-center gap-3 bg-white/5 border border-white/10 backdrop-blur-xl px-4 py-2 rounded-2xl mb-6 group hover:border-primary/50 transition-all cursor-default"
+              Nos services <Icon name="arrow_forward" size="18px" />
+            </Link>
+            <Link
+              to="/contact"
+              className="bg-white/5 hover:bg-white/10 border border-white/10 text-white px-10 py-4 rounded-full font-black text-[11px] uppercase tracking-widest flex items-center justify-center transition-all hover:border-white/30"
+            >
+              Contact
+            </Link>
+          </motion.div>
+
+          {/* Floating Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-wrap justify-center gap-6 lg:gap-10"
+          >
+            {[
+              { value: "10+", label: "Années d'expérience", color: "text-primary" },
+              { value: "1000+", label: "Apprenants formés", color: "text-accent-green" },
+              { value: "95%", label: "Satisfaction client", color: "text-accent-orange" }
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.8 + i * 0.15 }}
+                className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl px-8 py-5 hover:bg-white/[0.06] hover:border-white/10 transition-all group"
               >
-                <div className="w-2 h-2 bg-accent-green rounded-full animate-pulse shadow-[0_0_10px_#22c55e]"></div>
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-300 group-hover:text-white transition-colors">Expertise & Accompagnement</span>
+                <span className={`text-2xl sm:text-3xl lg:text-4xl font-black block tracking-tighter ${stat.color}`}>{stat.value}</span>
+                <span className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-black group-hover:text-gray-400 transition-colors">{stat.label}</span>
               </motion.div>
-
-              <h1 className="text-5xl lg:text-7xl font-display font-black mb-6 leading-[1.05] tracking-tighter">
-                Votre Partenaire <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-primary italic">Expert en IT</span>
-              </h1>
-              <p className="text-base lg:text-lg text-gray-400 mb-8 max-w-xl font-medium leading-relaxed">
-                Optimisez votre infrastructure et formez vos équipes avec nos solutions sur-mesure en maintenance, bureautique et transformation digitale.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 lg:gap-6">
-                <Link
-                  to="/services"
-                  className="bg-primary hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-black text-[11px] uppercase tracking-widest flex items-center justify-center gap-3 transition-all shadow-xl shadow-blue-500/20"
-                >
-                  Nos services <Icon name="arrow_forward" size="18px" />
-                </Link>
-                <Link
-                  to="/contact"
-                  className="bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-4 rounded-xl font-black text-[11px] uppercase tracking-widest flex items-center justify-center transition-all"
-                >
-                  Contact
-                </Link>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
-              className="relative hidden lg:block"
-            >
-              {/* Premium Dashboard Mockup/Graphic */}
-              <div className="relative z-10 bg-white shadow-[0_50px_100px_rgba(0,0,0,0.3)] p-1 rounded-[3rem] border border-white/10 overflow-hidden group">
-                <div className="bg-secondary-dark rounded-[2.8rem] p-12 relative overflow-hidden">
-                   <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2"></div>
-                   
-                   <div className="flex items-center gap-6 mb-12">
-                    <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center shadow-2xl shadow-blue-500/40 transform -rotate-3 group-hover:rotate-0 transition-transform duration-500">
-                      <Icon name="terminal" className="text-white" size="36px" />
-                    </div>
-                    <div>
-                      <h3 className="font-black text-2xl tracking-tight">Maintenance Pro</h3>
-                      <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Performance Optimisée 24/7</p>
-                    </div>
-                   </div>
-
-                   <div className="space-y-8">
-                     <div className="space-y-3">
-                       <div className="flex justify-between text-[11px] font-black uppercase tracking-widest">
-                         <span className="text-gray-400">Fiabilité Système</span>
-                         <span className="text-primary tracking-widest">100% stable</span>
-                       </div>
-                       <div className="h-4 bg-white/5 rounded-full overflow-hidden p-1 border border-white/5">
-                         <motion.div
-                           initial={{ width: 0 }}
-                           animate={{ width: "100%" }}
-                           transition={{ duration: 2, delay: 0.5 }}
-                           className="h-full bg-gradient-to-r from-primary to-blue-400 rounded-full"
-                         ></motion.div>
-                       </div>
-                     </div>
-
-                     <div className="grid grid-cols-2 gap-6 pt-4">
-                       <div className="bg-white/5 p-6 rounded-3xl border border-white/5 backdrop-blur-sm group-hover:bg-white/10 transition-colors">
-                          <span className="text-4xl font-black block mb-1 text-primary tracking-tighter">10+</span>
-                          <span className="text-[9px] text-gray-500 uppercase tracking-widest font-black leading-none">Années Experience</span>
-                       </div>
-                       <div className="bg-white/5 p-6 rounded-3xl border border-white/5 backdrop-blur-sm group-hover:bg-white/10 transition-colors">
-                          <span className="text-4xl font-black block mb-1 text-accent-green tracking-tighter">1200+</span>
-                          <span className="text-[9px] text-gray-500 uppercase tracking-widest font-black leading-none">Apprenants</span>
-                       </div>
-                     </div>
-                   </div>
-                </div>
-              </div>
-              
-              {/* Decorative elements */}
-              <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/30 rounded-full blur-[100px] -z-10 animate-pulse"></div>
-              <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-blue-600/20 rounded-full blur-[100px] -z-10 animate-pulse delay-500"></div>
-            </motion.div>
-          </div>
+            ))}
+          </motion.div>
         </div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        >
+          <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-gray-500">Explorer</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="w-5 h-8 border-2 border-white/20 rounded-full flex justify-center pt-1.5"
+          >
+            <div className="w-1 h-1.5 bg-primary rounded-full"></div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Services Section */}
@@ -144,7 +133,7 @@ const Home = () => {
             viewport={{ once: true }}
             className="mb-12"
           >
-            <h2 className="text-4xl font-display font-bold text-secondary-dark mb-4">Nos Pôles de Compétences</h2>
+            <h2 className="text-3xl sm:text-4xl font-display font-bold text-secondary-dark mb-4">Nos Pôles de Compétences</h2>
             <div className="w-20 h-1.5 bg-gradient-to-r from-primary to-blue-400 mx-auto rounded-full mb-6"></div>
             <p className="text-gray-500 max-w-xl mx-auto text-base">
               Une expertise polyvalente pour répondre à tous vos besoins informatiques.
@@ -173,7 +162,7 @@ const Home = () => {
                 icon: "history_edu",
                 color: "bg-orange-50/50",
                 textColor: "text-accent-orange",
-                features: ["Certifications Office", "Initiation Débutant", "Navigation Web"]
+                features: ["Maîtrise du Clavier", "Initiation Débutant", "Navigation Web"]
               },
               {
                 title: "Prestations Informatiques",
@@ -224,13 +213,13 @@ const Home = () => {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto px-4 relative z-10"
         >
-          <h2 className="text-4xl lg:text-5xl font-display font-bold mb-6">Votre Réussite commence <span className="text-primary italic">Ici</span></h2>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-6">Propulsez votre <span className="text-primary italic">Carrière</span></h2>
           <p className="text-lg text-gray-400 mb-10">
-            Contactez nos experts dès aujourd'hui pour un diagnostic gratuit.
+            Développez de nouvelles compétences et atteignez vos objectifs avec nos formations professionnelles.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link to="/contact" className="bg-primary hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-bold transform transition active:scale-95 shadow-xl shadow-blue-500/30 flex items-center gap-3">
-              <Icon name="rocket_launch" size="20px" /> Démarrer mon projet
+            <Link to="/formation" className="bg-primary hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-bold transform transition active:scale-95 shadow-xl shadow-blue-500/30 flex items-center gap-3">
+              <Icon name="school" size="24px" /> S'inscrire à une Formation
             </Link>
           </div>
         </motion.div>

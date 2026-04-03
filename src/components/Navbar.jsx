@@ -17,8 +17,7 @@ const Navbar = () => {
   const navLinks = [
     { title: 'Accueil', path: '/', icon: 'home' },
     { title: 'À propos', path: '/about', icon: 'info' },
-    { title: 'Services', path: '/services', icon: 'settings' },
-    { title: 'Portfolio', path: '/portfolio', icon: 'palette' },
+    { title: 'Services', path: '/services', icon: 'build' },
     { title: 'Contact', path: '/contact', icon: 'mail' },
   ];
 
@@ -30,23 +29,20 @@ const Navbar = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 py-4 lg:px-8 lg:py-4 pointer-events-none">
-      <motion.nav 
+      <motion.nav
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className={`max-w-7xl mx-auto pointer-events-auto transition-all duration-500 rounded-full border border-gray-100/50 shadow-[0_20px_40px_rgba(0,0,0,0.08)] ${
-          scrolled 
-          ? 'bg-white/90 backdrop-blur-2xl py-1.5 lg:py-2' 
-          : 'bg-white/95 backdrop-blur-md py-2 lg:py-2.5'
-        }`}
+        className={`max-w-7xl mx-auto pointer-events-auto transition-all duration-500 border border-white/40 shadow-[0_20px_40px_rgba(0,0,0,0.05)] ${isOpen ? 'rounded-[2rem]' : 'rounded-full'} ${scrolled
+          ? 'bg-white/70 backdrop-blur-2xl py-1.5 lg:py-2'
+          : 'bg-white/40 backdrop-blur-lg py-2 lg:py-2.5'
+          }`}
       >
         <div className="px-6 lg:px-10">
           <div className="flex justify-between items-center bg-transparent">
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link to="/" className="flex items-center gap-3 group">
-                <div className="bg-primary p-2 rounded-xl text-white shadow-lg shadow-blue-500/20 group-hover:rotate-6 transition-transform">
-                  <Icon name="terminal" size="24px" />
-                </div>
+                <img src="transparent.png" alt="SuccesInfo Logo" className="w-10 h-10 object-contain group-hover:scale-110 transition-transform" />
                 <div className="flex flex-col leading-none">
                   <span className="text-xl font-display font-black text-secondary-dark tracking-tighter">
                     Succes<span className="text-primary italic">Info</span>
@@ -63,10 +59,9 @@ const Navbar = () => {
                   key={link.path}
                   to={link.path}
                   className={({ isActive }) =>
-                    `px-5 py-2.5 rounded-full text-[13px] font-bold transition-all duration-300 relative group flex items-center gap-2 ${
-                      isActive 
-                      ? 'bg-blue-50 text-primary' 
-                      : 'text-gray-600 hover:text-secondary-dark hover:bg-gray-50'
+                    `px-5 py-2.5 rounded-full text-[13px] font-bold transition-all duration-300 relative group flex items-center gap-2 ${isActive
+                      ? 'text-primary'
+                      : 'text-gray-600 hover:text-primary'
                     }`
                   }
                 >
@@ -74,7 +69,7 @@ const Navbar = () => {
                     <>
                       {link.title}
                       {isActive && (
-                        <motion.div 
+                        <motion.div
                           layoutId="navUnderlinePill"
                           className="absolute bottom-0 left-5 right-5 h-[3px] bg-primary rounded-full"
                         />
@@ -88,18 +83,29 @@ const Navbar = () => {
             {/* Right Side Actions */}
             <div className="flex items-center gap-1 sm:gap-4">
               <Link
-                to="/contact"
-                className="border-2 border-primary text-primary px-6 py-2 rounded-full font-bold text-sm hover:bg-primary hover:text-white transition-all shadow-lg shadow-blue-500/10 active:scale-95 flex items-center gap-2"
+                to="/formation"
+                className="hidden sm:flex border-2 border-primary text-primary px-6 py-2 rounded-full font-bold text-sm hover:bg-primary hover:text-white transition-all shadow-lg shadow-blue-500/10 active:scale-95 items-center gap-2"
               >
-                Nous Contacter
+                Formez-vous
               </Link>
-              
+
               {/* Mobile Burger */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="lg:hidden p-2 rounded-full bg-gray-50 text-secondary-dark hover:bg-primary hover:text-white transition-all border border-gray-100"
+                className="lg:hidden p-2 rounded-full bg-gray-50 text-secondary-dark hover:bg-primary hover:text-white transition-all border border-gray-100 flex items-center justify-center"
               >
-                <Icon name={isOpen ? "close" : "menu"} size="24px" />
+                {isOpen ? (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                  </svg>
+                )}
               </button>
             </div>
           </div>
@@ -108,11 +114,11 @@ const Navbar = () => {
         {/* Mobile Menu Dropdown */}
         <AnimatePresence>
           {isOpen && (
-            <motion.div 
+            <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="lg:hidden bg-white overflow-hidden rounded-b-[2rem] border-t border-gray-100"
+              className="lg:hidden bg-white/80 backdrop-blur-2xl overflow-hidden rounded-b-[2rem] border-t border-gray-100/50"
             >
               <div className="px-6 py-10 space-y-3">
                 {navLinks.map((link, i) => (
@@ -126,8 +132,7 @@ const Navbar = () => {
                       to={link.path}
                       onClick={() => setIsOpen(false)}
                       className={({ isActive }) =>
-                        `flex items-center justify-between px-6 py-4 rounded-full text-lg font-black uppercase tracking-widest transition-all ${
-                          isActive ? 'bg-primary text-white shadow-xl shadow-blue-500/20' : 'text-gray-500 hover:bg-gray-50'
+                        `flex items-center justify-between px-6 py-4 rounded-full text-lg font-black uppercase tracking-widest transition-all ${isActive ? 'bg-primary text-white shadow-xl shadow-blue-500/20' : 'text-gray-500 hover:bg-gray-50'
                         }`
                       }
                     >

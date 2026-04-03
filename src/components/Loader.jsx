@@ -20,7 +20,7 @@ const Loader = () => {
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           className="absolute inset-0 w-40 h-40 border-t-4 border-primary rounded-full"
         />
-        
+
         {/* Logo in center */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <motion.div
@@ -29,7 +29,7 @@ const Loader = () => {
             transition={{ duration: 1, delay: 0.2 }}
             className="bg-primary p-4 rounded-2xl shadow-2xl shadow-blue-500/40"
           >
-             <span className="material-symbols-outlined !text-4xl text-white">security</span>
+            <img src="/transparent.png" alt="SuccesInfo Logo" className="w-12 h-12 object-contain" />
           </motion.div>
         </div>
       </div>
@@ -41,17 +41,17 @@ const Loader = () => {
         className="mt-12 text-center"
       >
         <h2 className="text-2xl font-display font-extrabold text-white tracking-widest mb-2">
-          CYBER<span className="text-primary italic">SUCCESS</span>
+          Succes<span className="text-primary italic">Info</span>
         </h2>
         <div className="flex gap-1 justify-center mt-4">
-           {[0, 1, 2].map((i) => (
-             <motion.div
-               key={i}
-               animate={{ opacity: [0.3, 1, 0.3] }}
-               transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
-               className="w-2 h-2 bg-primary rounded-full"
-             />
-           ))}
+          {[0, 1, 2].map((i) => (
+            <motion.div
+              key={i}
+              animate={{ opacity: [0.3, 1, 0.3] }}
+              transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
+              className="w-2 h-2 bg-primary rounded-full"
+            />
+          ))}
         </div>
       </motion.div>
 
