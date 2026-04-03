@@ -3,9 +3,34 @@ import Icon from '../components/Icon';
 import { motion } from 'framer-motion';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({ name: '', email: '', subject: 'Maintenance Informatique', message: '' });
+  const [status, setStatus] = useState({ loading: false, success: false, error: '' });
 
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const containerVariants = {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ loading: true, success: false, error: '' });
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'contact', ...formData })
+      });
+      
+      if (res.ok) {
+        setStatus({ loading: false, success: true, error: '' });
+        setFormData({ name: '', email: '', subject: 'Maintenance Informatique', message: '' });
+        setTimeout(() => setStatus(s => ({ ...s, success: false })), 5000);
+      } else {
+        const data = await res.json();
+        setStatus({ loading: false, success: false, error: data.error || "Une erreur est survenue." });
+      }
+    } catch (err) {
+      setStatus({ loading: false, success: false, error: "Erreur de connexion au serveur." });
+    }
+  };  const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } }
   };
@@ -95,7 +120,19 @@ const Contact = () => {
               Envoyez-nous un <span className="text-primary italic">Message</span>
             </h3>
 
-            <form className="space-y-8 relative z-10" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-8 relative z-10" onSubmit={handleSubmit}>
+              {status.success && (
+                <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg mb-6 flex items-center gap-3">
+                  <Icon name="check_circle" className="text-green-500" />
+                  <p className="text-green-800 font-bold text-sm">Votre message a été envoyé avec succès ! Nous vous répondrons très vite.</p>
+                </div>
+              )}
+              {status.error && (
+                <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg mb-6 flex items-center gap-3">
+                  <span className="text-red-500 font-bold text-lg">!</span>
+                  <p className="text-red-800 font-bold text-sm">{status.error}</p>
+                </div>
+              )}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="flex flex-col space-y-3">
                   <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-1">Nom Complet</label>
@@ -103,7 +140,7 @@ const Contact = () => {
                     <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors">
                       <Icon name="person" size="20px" />
                     </div>
-                    <input type="text" placeholder="Jean Dupont" className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-6 py-4 rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300" />
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Jean Dupont" className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-6 py-4 rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300" />
                   </div>
                 </div>
 
@@ -113,7 +150,7 @@ const Contact = () => {
                     <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors">
                       <Icon name="mail" size="20px" />
                     </div>
-                    <input type="email" placeholder="jean@email.com" className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-6 py-4 rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300" />
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="jean@email.com" className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-6 py-4 rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300" />
                   </div>
                 </div>
               </div>
@@ -124,7 +161,7 @@ const Contact = () => {
                   <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors z-10">
                     <Icon name="topic" size="20px" />
                   </div>
-                  <select className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-12 py-4 rounded-2xl outline-none transition-all font-bold text-secondary-dark appearance-none cursor-pointer">
+                  <select name="subject" value={formData.subject} onChange={handleChange} className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-12 py-4 rounded-2xl outline-none transition-all font-bold text-secondary-dark appearance-none cursor-pointer">
                     <option>Maintenance Informatique</option>
                     <option>Formation Bureautique</option>
                     <option>Solutions IT & Web</option>
@@ -143,7 +180,7 @@ const Contact = () => {
                   <div className="absolute top-4 left-0 pl-5 pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors">
                     <Icon name="edit_note" size="20px" />
                   </div>
-                  <textarea rows="5" placeholder="Décrivez votre besoin en quelques lignes..." className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-6 py-4 rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300 resize-none"></textarea>
+                  <textarea name="message" value={formData.message} onChange={handleChange} required rows="5" placeholder="Décrivez votre besoin en quelques lignes..." className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-6 py-4 rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300 resize-none"></textarea>
                 </div>
               </div>
 
@@ -151,9 +188,10 @@ const Contact = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full bg-secondary-dark hover:bg-black text-white py-5 rounded-2xl font-bold text-[12px] uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all transform shadow-xl shadow-black/10 group mt-4"
+                disabled={status.loading}
+                className={`w-full ${status.loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-secondary-dark hover:bg-black'} text-white py-5 rounded-2xl font-bold text-[12px] uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all transform shadow-xl shadow-black/10 group mt-4`}
               >
-                Envoyer ma demande <Icon name="send" size="20px" className="group-hover:translate-x-2 transition-transform" />
+                {status.loading ? "Envoi en cours..." : "Envoyer ma demande"} {!status.loading && <Icon name="send" size="20px" className="group-hover:translate-x-2 transition-transform" />}
               </motion.button>
             </form>
           </div>

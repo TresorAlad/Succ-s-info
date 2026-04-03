@@ -1,8 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Icon from '../components/Icon';
 import { motion } from 'framer-motion';
 
 const Formation = () => {
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: 'Formation Entreprenariat', message: '' });
+  const [status, setStatus] = useState({ loading: false, success: false, error: '' });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus({ loading: true, success: false, error: '' });
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          type: 'inscription', 
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          formationDetails: { phone: formData.phone }
+        })
+      });
+      
+      if (res.ok) {
+        setStatus({ loading: false, success: true, error: '' });
+        setFormData({ name: '', email: '', phone: '', subject: 'Formation Entreprenariat', message: '' });
+        setTimeout(() => setStatus(s => ({ ...s, success: false })), 5000);
+      } else {
+        const data = await res.json();
+        setStatus({ loading: false, success: false, error: data.error || "Une erreur est survenue." });
+      }
+    } catch (err) {
+      setStatus({ loading: false, success: false, error: "Erreur de connexion au serveur." });
+    }
+  };
   const Icon = ({ name, className = "", size = "24px" }: { name: string; className?: string; size?: string }) => (
     <span className={`material-symbols-outlined !text-[inherit] ${className}`} style={{ fontSize: size }}>
       {name}
@@ -148,7 +183,19 @@ const Formation = () => {
               Formulaire <span className="text-primary italic">d'inscription</span>
             </h3>
 
-            <form className="space-y-8 relative z-10" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-8 relative z-10" onSubmit={handleSubmit}>
+              {status.success && (
+                <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg mb-6 flex items-center gap-3">
+                  <Icon name="check_circle" className="text-green-500" />
+                  <p className="text-green-800 font-bold text-sm">Votre Inscription a été envoyée avec succès ! Nous vous recontacterons rapidement.</p>
+                </div>
+              )}
+              {status.error && (
+                <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg mb-6 flex items-center gap-3">
+                  <span className="text-red-500 font-bold text-lg">!</span>
+                  <p className="text-red-800 font-bold text-sm">{status.error}</p>
+                </div>
+              )}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Inputs with floating-like refined design */}
                 <div className="flex flex-col space-y-3">
@@ -157,7 +204,7 @@ const Formation = () => {
                     <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors">
                       <Icon name="person" size="20px" />
                     </div>
-                    <input type="text" placeholder="John Doe" className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-6 py-4 rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300" />
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="John Doe" className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-6 py-4 rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300" />
                   </div>
                 </div>
 
@@ -167,7 +214,7 @@ const Formation = () => {
                     <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors">
                       <Icon name="mail" size="20px" />
                     </div>
-                    <input type="email" placeholder="john@example.com" className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-6 py-4 rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300" />
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="john@example.com" className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-6 py-4 rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300" />
                   </div>
                 </div>
 
@@ -177,7 +224,7 @@ const Formation = () => {
                     <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors">
                       <Icon name="phone" size="20px" />
                     </div>
-                    <input type="text" placeholder="+228 90 00 00 00" className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-6 py-4 rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300" />
+                    <input type="text" name="phone" value={formData.phone} onChange={handleChange} required placeholder="+228 90 00 00 00" className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-6 py-4 rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300" />
                   </div>
                 </div>
 
@@ -187,7 +234,7 @@ const Formation = () => {
                     <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors z-10">
                       <Icon name="menu_book" size="20px" />
                     </div>
-                    <select className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-12 py-4 rounded-2xl outline-none transition-all font-bold text-secondary-dark appearance-none cursor-pointer h-[56px]">
+                    <select name="subject" value={formData.subject} onChange={handleChange} className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-12 py-4 rounded-2xl outline-none transition-all font-bold text-secondary-dark appearance-none cursor-pointer h-[56px]">
                       <option>Formation Entreprenariat</option>
                       <option>Formation Bureautique</option>
                       <option>Gestion & Comptabilité</option>
@@ -206,7 +253,7 @@ const Formation = () => {
                   <div className="absolute top-4 left-0 pl-5 pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors">
                     <Icon name="edit_note" size="20px" />
                   </div>
-                  <textarea rows={4} placeholder="Précisez vos attentes, votre niveau, vos disponibilités..." className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-6 py-4 rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300 resize-none"></textarea>
+                  <textarea name="message" value={formData.message} onChange={handleChange} rows={4} placeholder="Précisez vos attentes, votre niveau, vos disponibilités..." className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-6 py-4 rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300 resize-none"></textarea>
                 </div>
               </div>
 
@@ -214,9 +261,10 @@ const Formation = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full bg-secondary-dark hover:bg-black text-white py-5 rounded-2xl font-bold text-[12px] uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all transform shadow-xl shadow-black/10 group mt-8"
+                disabled={status.loading}
+                className={`w-full ${status.loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-secondary-dark hover:bg-black'} text-white py-5 rounded-2xl font-bold text-[12px] uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all transform shadow-xl shadow-black/10 group mt-8`}
               >
-                Valider mon Inscription <Icon name="arrow_forward" size="20px" className="group-hover:translate-x-2 transition-transform" />
+                {status.loading ? "Envoi en cours..." : "Valider mon Inscription"} {!status.loading && <Icon name="arrow_forward" size="20px" className="group-hover:translate-x-2 transition-transform" />}
               </motion.button>
             </form>
           </div>
