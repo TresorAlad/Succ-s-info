@@ -32,15 +32,15 @@ const Navbar = () => {
       <motion.nav
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className={`max-w-7xl mx-auto pointer-events-auto transition-all duration-500 border border-white/40 shadow-[0_20px_40px_rgba(0,0,0,0.05)] ${isOpen ? 'rounded-[2rem]' : 'rounded-full'} ${scrolled
-          ? 'bg-white/70 backdrop-blur-2xl py-1.5 lg:py-2'
-          : 'bg-white/40 backdrop-blur-lg py-2 lg:py-2.5'
+        className={`max-w-7xl mx-auto pointer-events-auto transition-all duration-500 lg:border lg:border-white/40 lg:shadow-[0_20px_40px_rgba(0,0,0,0.05)] ${isOpen ? 'bg-white/90 backdrop-blur-3xl rounded-[2rem] shadow-2xl border border-white/40' : 'bg-transparent lg:rounded-full'} ${scrolled
+          ? 'lg:bg-white/70 lg:backdrop-blur-2xl py-1.5 lg:py-2'
+          : 'lg:bg-white/40 lg:backdrop-blur-lg py-2 lg:py-2.5'
           }`}
       >
         <div className="px-6 lg:px-10">
-          <div className="flex justify-between items-center bg-transparent">
+          <div className="flex justify-end lg:justify-between items-center bg-transparent">
             {/* Logo */}
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 hidden lg:block">
               <Link to="/" className="flex items-center gap-3 group">
                 <img src="transparent.png" alt="SuccesInfo Logo" className="w-10 h-10 object-contain group-hover:scale-110 transition-transform" />
                 <div className="flex flex-col leading-none">
@@ -92,7 +92,7 @@ const Navbar = () => {
               {/* Mobile Burger */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="lg:hidden p-2 rounded-full bg-gray-50 text-secondary-dark hover:bg-primary hover:text-white transition-all border border-gray-100 flex items-center justify-center"
+                className={`lg:hidden p-3 rounded-full transition-all border flex items-center justify-center shadow-lg ${scrolled || isOpen ? 'bg-white text-secondary-dark border-gray-100 hover:bg-primary hover:text-white' : 'bg-white/20 backdrop-blur-md text-white border-white/30 hover:bg-white/40'}`}
               >
                 {isOpen ? (
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
