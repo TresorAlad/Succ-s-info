@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import Icon from '../components/Icon';
 
 const Services = () => {
-  const Icon = ({ name, className = "", size = "24px" }) => (
-    <span className={`material-symbols-outlined !text-[inherit] ${className}`} style={{ fontSize: size }}>
-      {name}
-    </span>
-  );
+  const [activeMobileCat, setActiveMobileCat] = useState(null);
+
+
 
   const categories = [
     {
@@ -95,7 +94,8 @@ const Services = () => {
           >
             Un accompagnement complet pour vos besoins quotidiens : de la réparation de votre matériel à votre formation continue.
           </motion.p>
-          <div className="flex justify-center gap-8 text-sm font-bold uppercase tracking-[0.2em] text-gray-400">
+          {/* Desktop Features */}
+          <div className="hidden sm:flex justify-center items-center gap-8 text-sm font-bold uppercase tracking-[0.2em] text-gray-400 w-full mb-4">
             {[
               { icon: "verified", color: "text-primary", label: "Expertise" },
               { icon: "schedule", color: "text-accent-orange", label: "Disponibilité" },
@@ -106,11 +106,40 @@ const Services = () => {
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5 + i * 0.1 }}
-                className="flex items-center gap-3"
+                className="flex items-center gap-3 shrink-0"
               >
                 <Icon name={feature.icon} className={feature.color} size="20px" /> {feature.label}
               </motion.span>
             ))}
+          </div>
+
+          {/* Mobile Animated Marquee Features */}
+          <div className="sm:hidden flex overflow-hidden w-full relative">
+            {/* Fading edges for marquee */}
+            <div className="absolute top-0 left-0 w-8 h-full bg-gradient-to-r from-white to-transparent z-10"></div>
+            <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-white to-transparent z-10"></div>
+            
+            <motion.div
+              animate={{ x: ["0%", "-33.33%"] }}
+              transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
+              className="flex items-center gap-8 w-max text-xs font-bold uppercase tracking-[0.2em] text-gray-400 py-2"
+            >
+              {[
+                { icon: "verified", color: "text-primary", label: "Expertise" },
+                { icon: "schedule", color: "text-accent-orange", label: "Disponibilité" },
+                { icon: "thumb_up", color: "text-accent-green", label: "Satisfaction" },
+                { icon: "verified", color: "text-primary", label: "Expertise" },
+                { icon: "schedule", color: "text-accent-orange", label: "Disponibilité" },
+                { icon: "thumb_up", color: "text-accent-green", label: "Satisfaction" },
+                { icon: "verified", color: "text-primary", label: "Expertise" },
+                { icon: "schedule", color: "text-accent-orange", label: "Disponibilité" },
+                { icon: "thumb_up", color: "text-accent-green", label: "Satisfaction" }
+              ].map((feature, i) => (
+                <span key={i} className="flex items-center gap-2 shrink-0">
+                  <Icon name={feature.icon} className={feature.color} size="16px" /> {feature.label}
+                </span>
+              ))}
+            </motion.div>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-blue-400 to-accent-green opacity-30"></div>
@@ -126,7 +155,7 @@ const Services = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8 }}
-                className={`${idx % 2 !== 0 ? 'lg:order-last' : ''} lg:col-span-5 sticky top-32`}
+                className={`${idx % 2 !== 0 ? 'lg:order-last' : ''} lg:col-span-5 lg:sticky lg:top-32`}
               >
                 <div className="w-24 h-24 bg-white rounded-3xl shadow-xl flex items-center justify-center mb-10 border border-gray-100 rotate-3 transform group hover:rotate-0 transition-transform">
                   <Icon name={cat.icon} className="text-primary text-secondary-dark" size="48px" />
@@ -150,6 +179,15 @@ const Services = () => {
                     </motion.div>
                   ))}
                 </div>
+
+                {/* Mobile Accordion Toggle */}
+                <button 
+                  onClick={() => setActiveMobileCat(activeMobileCat === cat.id ? null : cat.id)}
+                  className="lg:hidden mt-8 flex items-center justify-between w-full bg-blue-50/50 p-5 rounded-2xl font-bold text-primary border border-blue-100 hover:bg-blue-50 transition-all active:scale-95 shadow-sm"
+                >
+                  <span className="text-sm uppercase tracking-widest">{activeMobileCat === cat.id ? "Masquer les détails" : "Voir plus de détails"}</span>
+                  <Icon name={activeMobileCat === cat.id ? "expand_less" : "expand_more"} size="24px" />
+                </button>
               </motion.div>
 
               <div className="lg:col-span-1 hidden lg:block h-full border-r border-dashed border-gray-200"></div>
@@ -159,7 +197,7 @@ const Services = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="lg:col-span-6 grid grid-cols-1 md:grid-cols-2 gap-8"
+                className={`lg:col-span-6 grid-cols-1 md:grid-cols-2 gap-8 lg:grid ${activeMobileCat === cat.id ? 'grid' : 'hidden'}`}
               >
                 {cat.items.map((item, i) => (
                   <motion.div

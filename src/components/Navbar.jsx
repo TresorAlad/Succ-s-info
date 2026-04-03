@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import Icon from './Icon';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,11 +22,7 @@ const Navbar = () => {
     { title: 'Contact', path: '/contact', icon: 'mail' },
   ];
 
-  const Icon = ({ name, className = "", size = "20px" }) => (
-    <span className={`material-symbols-outlined !text-[inherit] ${className}`} style={{ fontSize: size }}>
-      {name}
-    </span>
-  );
+
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 py-4 lg:px-8 lg:py-4 pointer-events-none">

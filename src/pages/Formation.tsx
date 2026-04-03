@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from '../components/Icon';
 import { motion } from 'framer-motion';
 
 const Formation = () => {

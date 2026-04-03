@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import Icon from '../components/Icon';
 
 const Home = () => {
   const containerVariants = {
@@ -13,11 +14,7 @@ const Home = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
   };
 
-  const Icon = ({ name, className = "", size = "24px" }) => (
-    <span className={`material-symbols-outlined !text-[inherit] ${className}`} style={{ fontSize: size }}>
-      {name}
-    </span>
-  );
+
 
   return (
     <motion.div

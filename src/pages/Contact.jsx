@@ -1,12 +1,9 @@
 import React from 'react';
+import Icon from '../components/Icon';
 import { motion } from 'framer-motion';
 
 const Contact = () => {
-  const Icon = ({ name, className = "", size = "24px" }) => (
-    <span className={`material-symbols-outlined !text-[inherit] ${className}`} style={{ fontSize: size }}>
-      {name}
-    </span>
-  );
+
 
   const containerVariants = {
     hidden: { opacity: 0 },

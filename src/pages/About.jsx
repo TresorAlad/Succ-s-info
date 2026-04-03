@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Counter from '../components/Counter';
+import Icon from '../components/Icon';
 
 import img1 from '../assets/images/profile.jpg';
 import img2 from '../assets/images/profile1.jpg';
@@ -47,11 +48,7 @@ const About = () => {
     transition: { duration: 0.6 }
   };
 
-  const Icon = ({ name, className = "", size = "24px" }) => (
-    <span className={`material-symbols-outlined !text-[inherit] ${className}`} style={{ fontSize: size }}>
-      {name}
-    </span>
-  );
+
 
   return (
     <motion.div

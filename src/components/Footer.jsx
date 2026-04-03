@@ -1,12 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Icon from './Icon';
 
 const Footer = () => {
-  const Icon = ({ name, className = "", size = "20px" }) => (
-    <span className={`material-symbols-outlined !text-[inherit] ${className}`} style={{ fontSize: size }}>
-      {name}
-    </span>
-  );
+
 
   return (
     <footer className="footer-container bg-secondary-dark text-white pt-12 pb-8 relative overflow-hidden">
