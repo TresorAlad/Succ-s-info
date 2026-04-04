@@ -57,13 +57,13 @@ const Services = () => {
   return (
     <div className="bg-secondary-light min-h-screen">
       {/* Header */}
-      <section className="bg-white py-20 lg:py-32 shadow-sm relative overflow-hidden">
+      <section className="bg-white pt-24 lg:pt-40 pb-12 lg:py-32 shadow-sm relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_10%_20%,rgba(37,99,235,0.05)_0%,transparent_50%)]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-secondary-dark mb-6 sm:mb-8">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold text-secondary-dark mb-4 sm:mb-8">
             Nos Services <span className="text-primary italic">Informatiques</span>
           </h1>
-          <p className="text-lg sm:text-xl text-gray-500 max-w-3xl mx-auto mb-10 sm:mb-12 leading-relaxed font-medium">
+          <p className="text-sm sm:text-xl text-gray-500 max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed font-medium">
             Un accompagnement complet pour vos besoins quotidiens : de la réparation de votre matériel à votre formation continue.
           </p>
           {/* Desktop Features */}
@@ -107,10 +107,10 @@ const Services = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-24 sm:space-y-40">
+      <section className="py-12 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="space-y-12 sm:space-y-40">
           {categories.map((cat, idx) => (
-            <div key={cat.id} id={cat.id} className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+            <div key={cat.id} id={cat.id} className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
               <div
                 className={`${idx % 2 !== 0 ? 'lg:order-last' : ''} lg:col-span-5 lg:sticky lg:top-32`}
               >

@@ -2,9 +2,8 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import Loader from './components/Loader';
-import Home from './pages/Home';
-
-// Lazy load non-critical routes to speed up the initial website loading
+// Lazy load routes to show the loader and speed up initial page weight
+const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Services = lazy(() => import('./pages/Services'));
 const Contact = lazy(() => import('./pages/Contact'));

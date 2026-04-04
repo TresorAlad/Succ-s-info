@@ -62,13 +62,13 @@ const Formation = () => {
   return (
     <div className="bg-secondary-light min-h-screen">
       {/* Hero Section */}
-      <section className="bg-white py-20 lg:py-32 shadow-sm relative overflow-hidden">
+      <section className="bg-white pt-24 lg:pt-40 pb-12 shadow-sm relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_10%_20%,rgba(37,99,235,0.05)_0%,transparent_50%)]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-secondary-dark mb-6">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold text-secondary-dark mb-4 sm:mb-6 leading-tight">
             Nos <span className="text-primary italic">Formations</span>
           </h1>
-          <p className="text-lg sm:text-xl text-gray-500 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
+          <p className="text-sm sm:text-xl text-gray-500 max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed font-medium">
             Développez vos compétences avec nos programmes conçus pour répondre aux besoins actuels du marché professionnel.
           </p>
         </div>
@@ -76,18 +76,18 @@ const Formation = () => {
       </section>
 
       {/* Courses Cards */}
-      <section className="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {courses.map((course, idx) => (
             <div 
               key={idx}
-              className="bg-white p-8 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 transition-all group flex flex-col items-center text-center hover:translate-y-[-8px] hover:shadow-xl"
+              className="bg-white p-6 sm:p-10 rounded-[1.5rem] sm:rounded-[2.5rem] border border-gray-100 transition-all group flex flex-col items-center text-center hover:translate-y-[-8px] hover:shadow-xl"
             >
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-[1.5rem] bg-blue-50 flex items-center justify-center mb-6 sm:mb-8 group-hover:bg-primary transition-colors duration-500 shadow-sm">
-                <Icon name={course.icon} className="text-primary group-hover:text-white transition-colors" size="32px" />
+              <div className="w-12 h-12 sm:w-20 sm:h-20 rounded-xl sm:rounded-[1.5rem] bg-blue-50 flex items-center justify-center mb-5 sm:mb-8 group-hover:bg-primary transition-colors duration-500 shadow-sm">
+                <Icon name={course.icon} className="text-primary group-hover:text-white transition-colors" size="28px" />
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold mb-4 font-display text-secondary-dark">{course.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-6 sm:mb-8 font-medium">{course.description}</p>
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 font-display text-secondary-dark">{course.title}</h3>
+              <p className="text-gray-500 text-xs sm:text-sm leading-relaxed mb-6 sm:mb-8 font-medium">{course.description}</p>
               <div className="h-1 w-12 bg-gray-100 rounded-full group-hover:w-24 group-hover:bg-primary transition-all duration-500 mt-auto"></div>
             </div>
           ))}
@@ -95,8 +95,8 @@ const Formation = () => {
       </section>
 
       {/* Registration Form Section */}
-      <section className="py-8 sm:py-12 pb-16 sm:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-secondary-dark rounded-[2rem] sm:rounded-[3rem] shadow-2xl relative overflow-hidden flex flex-col lg:flex-row">
+      <section className="py-6 sm:py-12 pb-12 sm:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-secondary-dark rounded-[1.5rem] sm:rounded-[3rem] shadow-2xl relative overflow-hidden flex flex-col lg:flex-row">
           {/* Left panel - Info / Image */}
           <div className="lg:w-5/12 bg-primary relative p-8 sm:p-12 lg:p-16 text-white overflow-hidden flex flex-col justify-center">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-[80px]"></div>
@@ -106,10 +106,10 @@ const Formation = () => {
               <div className="bg-white/20 w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center mb-6 sm:mb-8 backdrop-blur-sm border border-white/30 shadow-sm">
                 <Icon name="school" size="24px" />
               </div>
-              <h2 className="text-3xl sm:text-4xl font-display font-black mb-4 sm:mb-6 leading-tight">
+              <h2 className="text-2xl sm:text-4xl font-display font-black mb-3 sm:mb-6 leading-tight">
                 Passez à la <br/> <span className="italic text-blue-200">vitesse supérieure</span>
               </h2>
-              <p className="text-blue-100 mb-8 sm:mb-10 text-base sm:text-lg leading-relaxed border-l-4 border-accent-orange pl-4 font-medium">
+              <p className="text-blue-100 mb-6 sm:mb-10 text-sm sm:text-lg leading-relaxed border-l-4 border-accent-orange pl-4 font-medium">
                 Remplissez ce formulaire pour réserver votre place. Nos conseillers vous contacteront sous 24h ouvrées pour finaliser votre inscription.
               </p>
               

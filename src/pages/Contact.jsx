@@ -34,13 +34,13 @@ const Contact = () => {
   return (
     <div className="bg-secondary-light min-h-screen">
       {/* Hero Header */}
-      <section className="bg-white py-20 lg:py-32 shadow-sm relative overflow-hidden text-center">
+      <section className="bg-white pt-24 lg:pt-40 pb-12 lg:pb-32 shadow-sm relative overflow-hidden text-center">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_10%_20%,rgba(37,99,235,0.05)_0%,transparent_50%)]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-secondary-dark mb-6">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold text-secondary-dark mb-4 sm:mb-6 leading-tight">
             Parlons de votre <span className="text-primary italic">Projet</span>
           </h1>
-          <p className="text-lg sm:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-medium">
+          <p className="text-sm sm:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-medium">
             Contactez notre équipe d'experts pour obtenir un devis personnalisé ou des informations complémentaires.
           </p>
         </div>
@@ -48,7 +48,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-12 relative z-20">
+      <section className="py-8 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-12 relative z-20">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {[
             { label: "Email", info: "succesinfo9@gmail.com", icon: "alternate_email", color: "text-primary", desc: "Support client & Devis" },
@@ -58,27 +58,26 @@ const Contact = () => {
           ].map((item, i) => (
             <div
               key={i}
-              className="bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl border border-gray-100 shadow-sm transition-all group text-center hover:translate-y-[-8px] hover:shadow-xl"
+              className="bg-white p-5 sm:p-8 rounded-2xl sm:rounded-3xl border border-gray-100 shadow-sm transition-all group text-center hover:translate-y-[-8px] hover:shadow-xl"
             >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gray-50 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 mx-auto group-hover:bg-primary transition-colors duration-500 shadow-sm">
-                <Icon name={item.icon} className={`${item.color} group-hover:text-white transition-colors`} size="24px" />
+              <div className="w-10 h-10 sm:w-14 sm:h-14 bg-gray-50 rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-6 mx-auto group-hover:bg-primary transition-colors duration-500 shadow-sm">
+                <Icon name={item.icon} className={`${item.color} group-hover:text-white transition-colors`} size="20px" />
               </div>
-              <h4 className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-2">{item.label}</h4>
-              <p className="text-sm sm:text-lg font-black text-secondary-dark mb-1 tracking-tight group-hover:text-primary transition-colors break-words">{item.info}</p>
-              <p className="text-[10px] sm:text-sm text-gray-500 font-medium hidden sm:block">{item.desc}</p>
+              <h4 className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-1 sm:mb-2">{item.label}</h4>
+              <p className="text-xs sm:text-lg font-black text-secondary-dark mb-0.5 tracking-tight group-hover:text-primary transition-colors break-words">{item.info}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Form + Map Section */}
-      <section className="pb-16 sm:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-secondary-dark rounded-[2rem] sm:rounded-[3rem] shadow-2xl relative overflow-hidden flex flex-col lg:flex-row">
+      <section className="pb-12 sm:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-secondary-dark rounded-[1.5rem] sm:rounded-[3rem] shadow-2xl relative overflow-hidden flex flex-col lg:flex-row">
           {/* Left panel - Form */}
           <div className="lg:w-7/12 p-8 sm:p-12 lg:p-16 bg-white relative order-2 lg:order-1">
             <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_100%_0%,rgba(37,99,235,0.03)_0%,transparent_50%)]"></div>
-
-            <h3 className="text-2xl sm:text-3xl font-display font-black text-secondary-dark mb-8 sm:mb-10">
+            
+            <h3 className="text-2xl sm:text-3xl font-display font-black text-secondary-dark mb-6 sm:mb-10">
               Envoyez-nous un <br className="sm:hidden" /> <span className="text-primary italic text-3xl sm:text-4xl font-display">Message</span>
             </h3>
 

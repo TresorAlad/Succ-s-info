@@ -112,13 +112,43 @@ export default async function handler(req, res) {
           </div>
         </div>
       `;
+    } else if (type === 'newsletter') {
+      htmlContent = `
+        <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f8fafc; padding: 40px 20px;">
+          <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);">
+            <div style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); padding: 35px; text-align: center;">
+              <div style="display: inline-block; background-color: rgba(255, 255, 255, 0.2); padding: 10px; border-radius: 12px; margin-bottom: 15px;">
+                <span style="font-size: 30px;">✉️</span>
+              </div>
+              <h1 style="color: #ffffff; margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.025em;">Nouvel Abonné !</h1>
+              <p style="color: #D1FAE5; margin: 8px 0 0; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em;">SuccesInfo Newsletter</p>
+            </div>
+            <div style="padding: 40px; text-align: center;">
+              <p style="margin: 0; color: #64748B; font-size: 14px; font-weight: 500; margin-bottom: 10px;">Un nouvel utilisateur souhaite recevoir vos actualités :</p>
+              <div style="background-color: #F0FDF4; border: 2px dashed #10B981; border-radius: 12px; padding: 20px; margin-bottom: 25px;">
+                <p style="margin: 0; color: #065F46; font-size: 22px; font-weight: 800;">${email}</p>
+              </div>
+              <p style="color: #475569; font-size: 14px; line-height: 1.6;">Ajoutez cette adresse à votre liste de diffusion pour lui envoyer les prochaines astuces et offres.</p>
+              
+              <div style="margin-top: 35px; padding-top: 25px; border-top: 1px solid #F1F5F9;">
+                <a href="mailto:${email}" style="display: inline-block; background-color: #1E293B; color: #FFFFFF; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 14px;">Envoyer un mail de bienvenue</a>
+              </div>
+            </div>
+            <div style="background-color: #F8FAFC; padding: 20px; text-align: center; border-top: 1px solid #F1F5F9;">
+              <p style="margin: 0; color: #94A3B8; font-size: 11px;">© Le Succès Informatique - Gestion d'abonnés.</p>
+            </div>
+          </div>
+        </div>
+      `;
     }
 
     const mailOptions = {
       from: `"SuccesInfo" <${process.env.SMTP_EMAIL}>`,
       to: process.env.SMTP_EMAIL,
       replyTo: email,
-      subject: type === 'inscription' ? ` Inscription : ${subject} - ${name}` : ` Contact : ${subject} - ${name}`,
+      subject: type === 'newsletter' 
+        ? `🗞️ Nouvel Abonné Newsletter : ${email}` 
+        : (type === 'inscription' ? `📝 Inscription : ${subject} - ${name}` : `✉️ Contact : ${subject} - ${name}`),
       html: htmlContent,
     };
 

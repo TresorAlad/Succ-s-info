@@ -22,7 +22,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 py-3 lg:px-8 lg:py-4 pointer-events-none">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 py-2 lg:px-8 lg:py-4 pointer-events-none">
       <nav
         className={`max-w-7xl mx-auto pointer-events-auto transition-all duration-500 ${isOpen 
           ? 'bg-white border border-gray-100 rounded-[1.5rem] shadow-2xl overflow-hidden' 

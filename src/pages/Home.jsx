@@ -15,30 +15,30 @@ const Home = () => {
           <div className="absolute inset-0 opacity-[0.02] bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')]"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center pt-20 lg:pt-13 pb-20 sm:pb-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center pt-12 lg:pt-40 pb-12 sm:pb-32">
 
           {/* Title */}
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-black mb-6 sm:mb-8 leading-[1.05] tracking-tighter">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-black mb-4 sm:mb-8 leading-[1.05] tracking-tighter">
             Votre Partenaire <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-primary italic">Expert en IT</span>
           </h1>
 
           {/* Description */}
-          <p className="text-base lg:text-xl text-gray-400 mb-8 sm:mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-xl text-gray-400 mb-6 sm:mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
             Optimisez votre infrastructure et formez vos équipes avec nos solutions sur-mesure en maintenance, bureautique et transformation digitale.
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center items-center mb-10">
+          <div className="flex flex-col sm:flex-row gap-3 lg:gap-6 justify-center items-center mb-10">
             <Link
               to="/services"
-              className="w-full sm:w-auto bg-primary hover:bg-blue-600 text-white px-10 py-4 rounded-full font-black text-[11px] uppercase tracking-widest flex items-center justify-center gap-3 transition-all shadow-xl shadow-blue-500/20 hover:shadow-2xl hover:shadow-blue-500/30 active:scale-95 translate-y-0"
+              className="w-full sm:w-auto bg-primary hover:bg-blue-600 text-white px-8 py-3.5 rounded-full font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 transition-all shadow-xl shadow-blue-500/20 active:scale-95"
             >
               Nos services <Icon name="arrow_forward" size="18px" />
             </Link>
             <Link
               to="/contact"
-              className="w-full sm:w-auto bg-white/5 hover:bg-white/10 border border-white/10 text-white px-10 py-4 rounded-full font-black text-[11px] uppercase tracking-widest flex items-center justify-center transition-all hover:border-white/30"
+              className="w-full sm:w-auto bg-white/5 border border-white/10 text-white px-8 py-3.5 rounded-full font-black text-[10px] uppercase tracking-widest flex items-center justify-center transition-all"
             >
               Contact
             </Link>
@@ -72,12 +72,12 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-12 sm:py-16 bg-white relative">
+      <section className="py-8 sm:py-16 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mb-8 sm:mb-12">
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-secondary-dark mb-4">Nos Pôles de Compétences</h2>
-            <div className="w-20 h-1.5 bg-gradient-to-r from-primary to-blue-400 mx-auto rounded-full mb-6"></div>
-            <p className="text-gray-500 max-w-xl mx-auto text-base">
+          <div className="mb-6 sm:mb-12">
+            <h2 className="text-2xl sm:text-4xl font-display font-bold text-secondary-dark mb-3">Nos Pôles de Compétences</h2>
+            <div className="w-16 h-1 bg-gradient-to-r from-primary to-blue-400 mx-auto rounded-full mb-4"></div>
+            <p className="text-gray-500 max-w-xl mx-auto text-sm">
               Une expertise polyvalente pour répondre à tous vos besoins informatiques.
             </p>
           </div>
@@ -139,15 +139,15 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 bg-gradient-to-br from-secondary-dark to-black text-white text-center overflow-hidden relative">
+      <section className="py-8 sm:py-16 bg-gradient-to-br from-secondary-dark to-black text-white text-center overflow-hidden relative">
         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         <div className="max-w-4xl mx-auto px-4 relative z-10">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 sm:mb-6">Propulsez votre <span className="text-primary italic">Carrière</span></h2>
-          <p className="text-base sm:text-lg text-gray-400 mb-8 sm:mb-10">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-bold mb-3 sm:mb-6">Propulsez votre <span className="text-primary italic">Carrière</span></h2>
+          <p className="text-sm sm:text-lg text-gray-400 mb-6 sm:mb-10">
             Développez de nouvelles compétences et atteignez vos objectifs avec nos formations professionnelles.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link to="/formation" className="w-full sm:w-auto bg-primary hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-bold transform transition active:scale-95 shadow-xl shadow-blue-500/30 flex items-center gap-3 justify-center">
+            <Link to="/formation" className="w-full sm:w-auto bg-primary hover:bg-blue-600 text-white px-8 py-3.5 rounded-xl font-bold transform transition active:scale-95 shadow-xl shadow-blue-500/30 flex items-center gap-3 justify-center">
               <Icon name="school" size="24px" /> S'inscrire à une Formation
             </Link>
           </div>

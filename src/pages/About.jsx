@@ -11,7 +11,7 @@ const About = () => {
   const stats = [
     { label: "Années d'expérience", value: "10+" },
     { label: "Projets réussis", value: "200+" },
-    { label: "Formations certifiées", value: "1200+" },
+    { label: "Formations certifiées", value: "1000+" },
   ];
 
   const suggestions = [
@@ -43,12 +43,12 @@ const About = () => {
   return (
     <div className="pb-16 sm:pb-24">
       {/* Header */}
-      <section className="bg-secondary-dark text-white py-20 lg:py-32 relative overflow-hidden">
+      <section className="bg-secondary-dark text-white pt-24 lg:pt-40 pb-12 lg:pb-32 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/10 -skew-x-12 transform translate-x-1/3"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center lg:text-left">
           <div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold mb-6 sm:mb-8">Notre Mission : Votre <span className="text-primary italic">Réussite Technologique</span></h1>
-            <p className="text-lg sm:text-xl text-gray-300 max-w-2xl leading-relaxed">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold mb-4 sm:mb-8 leading-tight">Notre Mission : Votre <span className="text-primary italic">Réussite Technologique</span></h1>
+            <p className="text-sm sm:text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
               Depuis plus de 10 ans, nous accompagnons les entreprises et les particuliers dans leur quotidien numérique avec une expertise pointue en maintenance et formation.
             </p>
           </div>
@@ -56,9 +56,9 @@ const About = () => {
       </section>
 
       {/* Intro & Values */}
-      <section className="py-12 sm:py-24">
+      <section className="py-8 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16 sm:mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center mb-12 sm:mb-32">
             <div className="relative">
               {/* 3D Stacked Cards Carousel Simplified */}
               <div className="relative w-full aspect-square max-w-md mx-auto">
