@@ -8,10 +8,16 @@ const Loader = () => {
         <div className="w-40 h-40 border-4 border-primary/20 rounded-full animate-[spin_3s_linear_infinite]" />
         <div className="absolute inset-0 w-40 h-40 border-t-4 border-primary rounded-full animate-spin" />
 
-        {/* Logo in center */}
+        {/* Logo in center - Stylized SI with image fallback */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <div className="bg-primary p-4 rounded-2xl shadow-2xl shadow-blue-500/40">
-            <img src="/transparent.png" alt="SuccesInfo Logo" className="w-12 h-12 object-contain" />
+          <div className="bg-primary w-20 h-20 rounded-[1.5rem] shadow-2xl shadow-blue-500/40 flex items-center justify-center overflow-hidden border-2 border-white/20 animate-[pulse_2s_ease-in-out_infinite]">
+            <span className="text-white font-display font-black text-3xl select-none leading-none tracking-tighter">SI</span>
+            <img 
+              src="/logo.png" 
+              alt="SuccesInfo" 
+              className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700" 
+              onLoad={(e) => e.currentTarget.classList.remove('opacity-0')}
+            />
           </div>
         </div>
       </div>
