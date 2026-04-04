@@ -92,16 +92,9 @@ const Navbar = () => {
                 className={`lg:hidden p-3 rounded-full transition-all border flex items-center justify-center shadow-lg ${scrolled || isOpen ? 'bg-white text-secondary-dark border-gray-100 hover:bg-primary hover:text-white' : 'bg-white/20 backdrop-blur-md text-white border-white/30 hover:bg-white/40'}`}
               >
                 {isOpen ? (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
+                  <Icon name="close" size="24px" />
                 ) : (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                  </svg>
+                  <Icon name="menu" size="24px" />
                 )}
               </button>
             </div>

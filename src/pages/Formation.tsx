@@ -38,11 +38,6 @@ const Formation = () => {
       setStatus({ loading: false, success: false, error: "Erreur de connexion au serveur." });
     }
   };
-  const Icon = ({ name, className = "", size = "24px" }: { name: string; className?: string; size?: string }) => (
-    <span className={`material-symbols-outlined !text-[inherit] ${className}`} style={{ fontSize: size }}>
-      {name}
-    </span>
-  );
 
   const courses = [
     {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Icon from '../components/Icon';
 import { motion } from 'framer-motion';
 
@@ -30,7 +30,9 @@ const Contact = () => {
     } catch (err) {
       setStatus({ loading: false, success: false, error: "Erreur de connexion au serveur." });
     }
-  };  const containerVariants = {
+  };
+
+  const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } }
   };

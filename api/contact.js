@@ -25,49 +25,90 @@ export default async function handler(req, res) {
 
     if (type === 'contact') {
       htmlContent = `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
-          <div style="background-color: #2563EB; color: white; padding: 20px; text-align: center;">
-            <h2 style="margin: 0;">Nouvelle Demande de Contact</h2>
-            <p style="margin: 5px 0 0; opacity: 0.8;">SuccesInfo - Formulaire de Contact</p>
-          </div>
-          <div style="padding: 30px; background-color: #f9fafb;">
-            <p><strong>Nom Complet :</strong> ${name}</p>
-            <p><strong>Email :</strong> <a href="mailto:${email}">${email}</a></p>
-            <p><strong>Sujet :</strong> ${subject}</p>
-            <div style="margin-top: 20px; padding: 15px; background-color: white; border-left: 4px solid #2563EB; border-radius: 4px;">
-              <p style="margin: 0; color: #374151; white-space: pre-wrap;">${message}</p>
+        <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f1f5f9; padding: 40px 20px;">
+          <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+            <div style="background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%); padding: 30px; text-align: center;">
+              <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.025em;">Nouveau Message</h1>
+              <p style="color: #BFDBFE; margin: 8px 0 0; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;">SuccesInfo Expertise</p>
             </div>
-          </div>
-          <div style="background-color: #1e293b; color: #94a3b8; padding: 15px; text-align: center; font-size: 12px;">
-            Cet e-mail a été envoyé automatiquement depuis votre site web SuccesInfo.
+            <div style="padding: 40px;">
+              <div style="margin-bottom: 24px;">
+                <p style="margin: 0; color: #64748B; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">Expéditeur</p>
+                <p style="margin: 4px 0 0; color: #1E293B; font-size: 18px; font-weight: 600;">${name}</p>
+                <p style="margin: 0; color: #3B82F6; font-size: 14px; font-weight: 500;">${email}</p>
+              </div>
+              <div style="margin-bottom: 32px;">
+                <p style="margin: 0; color: #64748B; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">Sujet</p>
+                <div style="margin-top: 4px; padding: 12px 16px; background-color: #EFF6FF; border-left: 4px solid #3B82F6; border-radius: 4px;">
+                  <p style="margin: 0; color: #1E3A8A; font-size: 15px; font-weight: 700;">${subject}</p>
+                </div>
+              </div>
+              <div style="margin-bottom: 32px;">
+                <p style="margin: 0; color: #64748B; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">Message</p>
+                <div style="margin-top: 8px; color: #334155; font-size: 16px; line-height: 1.6; white-space: pre-wrap;">${message}</div>
+              </div>
+              <div style="text-align: center; border-t: 1px solid #F1F5F9; padding-top: 30px;">
+                <a href="mailto:${email}" style="display: inline-block; background-color: #1E293B; color: #FFFFFF; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px; transition: background-color 0.2s;">Répondre par e-mail</a>
+              </div>
+            </div>
+            <div style="background-color: #F8FAFC; border-top: 1px solid #F1F5F9; padding: 20px; text-align: center;">
+              <p style="margin: 0; color: #94A3B8; font-size: 12px;">© SuccesInfo - Envoyé avec ❤️ depuis le portail contact.</p>
+            </div>
           </div>
         </div>
       `;
     } else if (type === 'inscription') {
       htmlContent = `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
-          <div style="background-color: #f97316; color: white; padding: 20px; text-align: center;">
-            <h2 style="margin: 0;">Nouvelle Inscription à une Formation</h2>
-            <p style="margin: 5px 0 0; opacity: 0.8;">SuccesInfo - Espace Formation</p>
-          </div>
-          <div style="padding: 30px; background-color: #f9fafb;">
-            <p><strong>Candidat :</strong> ${name}</p>
-            <p><strong>Email :</strong> <a href="mailto:${email}">${email}</a></p>
-            <p><strong>Formation désirée :</strong> ${subject}</p>
-            
-            <h3 style="color: #333; margin-top: 25px; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px;">Informations supplémentaires</h3>
-            <div style="margin-top: 15px; padding: 15px; background-color: white; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-              <ul style="margin: 0; padding-left: 20px; color: #475569;">
-                <li><strong>Numéro de téléphone :</strong> ${formationDetails?.phone || 'Non renseigné'}</li>
-              </ul>
-              <div style="margin-top: 15px;">
-                <strong>Message / Attentes :</strong>
-                <p style="margin: 5px 0 0; color: #374151; white-space: pre-wrap;">${message || 'Aucun message.'}</p>
+        <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f8fafc; padding: 40px 20px;">
+          <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);">
+            <div style="background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%); padding: 35px; text-align: center;">
+              <div style="display: inline-block; background-color: rgba(255, 255, 255, 0.2); padding: 10px; border-radius: 12px; margin-bottom: 15px;">
+                <span style="font-size: 30px;">🚀</span>
+              </div>
+              <h1 style="color: #ffffff; margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.025em;">Nouvelle Inscription</h1>
+              <p style="color: #BFDBFE; margin: 8px 0 0; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em;">SuccesInfo Formation</p>
+            </div>
+            <div style="padding: 40px;">
+              <div style="margin-bottom: 35px;">
+                <p style="margin: 0; color: #64748B; font-size: 12px; font-weight: 700; text-transform: uppercase;">Candidat</p>
+                <p style="margin: 4px 0 0; color: #1E293B; font-size: 20px; font-weight: 700;">${name}</p>
+              </div>
+              
+              <div style="background-color: #EFF6FF; border-radius: 12px; padding: 25px; margin-bottom: 35px; border: 1px solid #DBEAFE;">
+                <p style="margin: 0; color: #1E3A8A; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">Formation Demandée</p>
+                <div style="color: #1E293B; font-size: 18px; font-weight: 800;">
+                   ${subject}
+                </div>
+              </div>
+
+              <div style="margin-bottom: 30px;">
+                <h3 style="color: #334155; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid #F1F5F9; padding-bottom: 8px; margin-bottom: 15px;">Détails de contact</h3>
+                <table style="width: 100%; border-collapse: collapse;">
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748B; font-size: 14px; width: 120px;">Email :</td>
+                    <td style="padding: 8px 0; color: #1E293B; font-size: 14px; font-weight: 600;"><a href="mailto:${email}" style="color: #2563EB; text-decoration: none;">${email}</a></td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #64748B; font-size: 14px;">Téléphone :</td>
+                    <td style="padding: 8px 0; color: #1E293B; font-size: 14px; font-weight: 600;">${formationDetails?.phone || 'Non spécifié'}</td>
+                  </tr>
+                </table>
+              </div>
+
+              <div style="margin-bottom: 30px;">
+                <h3 style="color: #334155; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid #F1F5F9; padding-bottom: 8px; margin-bottom: 15px;">Message du candidat</h3>
+                <div style="color: #475569; font-size: 15px; line-height: 1.6; font-style: italic;">"${message || 'Aucun message particulier fourni.'}"</div>
+              </div>
+
+              <div style="text-align: center; margin-top: 40px;">
+                <p style="color: #94A3B8; font-size: 13px; margin-bottom: 15px;">Action requise : Contacter le candidat sous 24h.</p>
+                <a href="tel:${formationDetails?.phone}" style="display: inline-block; background-color: #2563EB; color: #FFFFFF; padding: 14px 30px; border-radius: 10px; text-decoration: none; font-weight: 800; font-size: 14px; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);">Appeler le Candidat</a>
               </div>
             </div>
-          </div>
-          <div style="background-color: #1e293b; color: #94a3b8; padding: 15px; text-align: center; font-size: 12px;">
-            Cet e-mail a été envoyé automatiquement depuis l'application SuccesInfo.
+            <div style="background-color: #1E293B; padding: 25px; text-align: center;">
+              <p style="margin: 0; color: #64748B; font-size: 12px; margin-bottom: 8px;">SuccesInfo - Centre de Formation Informatique</p>
+              <p style="margin: 0; color: #475569; font-size: 11px;">Hahotoé, Togo | +228 98 10 70 15</p>
+            </div>
           </div>
         </div>
       `;
@@ -77,7 +118,7 @@ export default async function handler(req, res) {
       from: `"SuccesInfo" <${process.env.SMTP_EMAIL}>`,
       to: process.env.SMTP_EMAIL,
       replyTo: email,
-      subject: type === 'inscription' ? `🚀 Inscription : ${subject} - ${name}` : `✉️ Contact : ${subject} - ${name}`,
+      subject: type === 'inscription' ? ` Inscription : ${subject} - ${name}` : ` Contact : ${subject} - ${name}`,
       html: htmlContent,
     };
 
