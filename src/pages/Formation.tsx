@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Icon from '../components/Icon';
-import { motion } from 'framer-motion';
 
 const Formation = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: 'Formation Entreprenariat', message: '' });
@@ -60,129 +59,90 @@ const Formation = () => {
     }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-  };
-
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0, x: 20 }}
-      className="bg-secondary-light min-h-screen"
-    >
+    <div className="bg-secondary-light min-h-screen">
       {/* Hero Section */}
-      <section className="bg-white py-24 lg:py-32 shadow-sm relative overflow-hidden">
+      <section className="bg-white py-20 lg:py-32 shadow-sm relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_10%_20%,rgba(37,99,235,0.05)_0%,transparent_50%)]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-secondary-dark mb-6"
-          >
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-secondary-dark mb-6">
             Nos <span className="text-primary italic">Formations</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-gray-500 max-w-3xl mx-auto mb-10 leading-relaxed font-medium"
-          >
+          </h1>
+          <p className="text-lg sm:text-xl text-gray-500 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
             Développez vos compétences avec nos programmes conçus pour répondre aux besoins actuels du marché professionnel.
-          </motion.p>
+          </p>
         </div>
         <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-blue-400 to-accent-green opacity-30"></div>
       </section>
 
       {/* Courses Cards */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+      <section className="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {courses.map((course, idx) => (
-            <motion.div 
+            <div 
               key={idx}
-              variants={itemVariants}
-              whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(0,0,0,0.06)" }}
-              className="bg-white p-10 rounded-[2.5rem] border border-gray-100 transition-all group flex flex-col items-center text-center"
+              className="bg-white p-8 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 transition-all group flex flex-col items-center text-center hover:translate-y-[-8px] hover:shadow-xl"
             >
-              <div className="w-20 h-20 rounded-[1.5rem] bg-blue-50 flex items-center justify-center mb-8 group-hover:bg-primary transition-colors duration-500">
-                <Icon name={course.icon} className="text-primary group-hover:text-white transition-colors" size="40px" />
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-[1.5rem] bg-blue-50 flex items-center justify-center mb-6 sm:mb-8 group-hover:bg-primary transition-colors duration-500 shadow-sm">
+                <Icon name={course.icon} className="text-primary group-hover:text-white transition-colors" size="32px" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 font-display text-secondary-dark">{course.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-8">{course.description}</p>
+              <h3 className="text-xl sm:text-2xl font-bold mb-4 font-display text-secondary-dark">{course.title}</h3>
+              <p className="text-gray-500 text-sm leading-relaxed mb-6 sm:mb-8 font-medium">{course.description}</p>
               <div className="h-1 w-12 bg-gray-100 rounded-full group-hover:w-24 group-hover:bg-primary transition-all duration-500 mt-auto"></div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </section>
 
       {/* Registration Form Section */}
-      <section className="py-12 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-           initial={{ opacity: 0, y: 50 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-           transition={{ duration: 0.8 }}
-           className="bg-secondary-dark rounded-[3rem] shadow-2xl relative overflow-hidden flex flex-col lg:flex-row"
-        >
+      <section className="py-8 sm:py-12 pb-16 sm:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-secondary-dark rounded-[2rem] sm:rounded-[3rem] shadow-2xl relative overflow-hidden flex flex-col lg:flex-row">
           {/* Left panel - Info / Image */}
-          <div className="lg:w-5/12 bg-primary relative p-12 lg:p-16 text-white overflow-hidden flex flex-col justify-center">
+          <div className="lg:w-5/12 bg-primary relative p-8 sm:p-12 lg:p-16 text-white overflow-hidden flex flex-col justify-center">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-[80px]"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/20 rounded-full blur-[80px]"></div>
             
             <div className="relative z-10">
-              <div className="bg-white/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-8 backdrop-blur-sm border border-white/30">
-                <Icon name="school" size="32px" />
+              <div className="bg-white/20 w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center mb-6 sm:mb-8 backdrop-blur-sm border border-white/30 shadow-sm">
+                <Icon name="school" size="24px" />
               </div>
-              <h2 className="text-3xl sm:text-4xl font-display font-black mb-6 leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-display font-black mb-4 sm:mb-6 leading-tight">
                 Passez à la <br/> <span className="italic text-blue-200">vitesse supérieure</span>
               </h2>
-              <p className="text-blue-100 mb-10 text-lg leading-relaxed border-l-4 border-accent-orange pl-4">
+              <p className="text-blue-100 mb-8 sm:mb-10 text-base sm:text-lg leading-relaxed border-l-4 border-accent-orange pl-4 font-medium">
                 Remplissez ce formulaire pour réserver votre place. Nos conseillers vous contacteront sous 24h ouvrées pour finaliser votre inscription.
               </p>
               
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="bg-black/20 w-10 h-10 rounded-full flex items-center justify-center shrink-0">
-                    <Icon name="check_circle" size="20px" className="text-accent-green" />
+                  <div className="bg-black/20 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 shadow-sm">
+                    <Icon name="check_circle" size="18px" className="text-accent-green" />
                   </div>
-                  <span className="font-bold text-sm">Approche 100% pratique</span>
+                  <span className="font-bold text-xs sm:text-sm">Approche 100% pratique</span>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="bg-black/20 w-10 h-10 rounded-full flex items-center justify-center shrink-0">
-                    <Icon name="check_circle" size="20px" className="text-accent-green" />
+                  <div className="bg-black/20 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 shadow-sm">
+                    <Icon name="check_circle" size="18px" className="text-accent-green" />
                   </div>
-                  <span className="font-bold text-sm">Attestation de fin de formation</span>
+                  <span className="font-bold text-xs sm:text-sm">Attestation de fin de formation</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right panel - Form */}
-          <div className="lg:w-7/12 p-12 lg:p-16 bg-white relative">
+          <div className="lg:w-7/12 p-8 sm:p-12 lg:p-16 bg-white relative">
             <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_100%_0%,rgba(37,99,235,0.03)_0%,transparent_50%)]"></div>
             
-            <h3 className="text-2xl sm:text-3xl font-display font-black text-secondary-dark mb-10">
-              Formulaire <span className="text-primary italic">d'inscription</span>
+            <h3 className="text-2xl sm:text-3xl font-display font-black text-secondary-dark mb-8 sm:mb-10">
+              Formulaire <span className="text-primary italic text-3xl sm:text-4xl font-display">d'inscription</span>
             </h3>
 
-            <form className="space-y-8 relative z-10" onSubmit={handleSubmit}>
+            <form className="space-y-6 sm:space-y-8 relative z-10" onSubmit={handleSubmit}>
               {status.success && (
                 <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg mb-6 flex items-center gap-3">
                   <Icon name="check_circle" className="text-green-500" />
-                  <p className="text-green-800 font-bold text-sm">Votre Inscription a été envoyée avec succès ! Nous vous recontacterons rapidement.</p>
+                  <p className="text-green-800 font-bold text-sm">Votre Inscription a été envoyée avec succès !</p>
                 </div>
               )}
               {status.error && (
@@ -191,81 +151,80 @@ const Formation = () => {
                   <p className="text-red-800 font-bold text-sm">{status.error}</p>
                 </div>
               )}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 {/* Inputs with floating-like refined design */}
-                <div className="flex flex-col space-y-3">
+                <div className="flex flex-col space-y-2 sm:space-y-3">
                   <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-1">Nom Complet</label>
                   <div className="relative group">
                     <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors">
-                      <Icon name="person" size="20px" />
+                      <Icon name="person" size="18px" />
                     </div>
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="John Doe" className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-6 py-4 rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300" />
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Nom et Prénom" className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-11 sm:pl-12 pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300" />
                   </div>
                 </div>
 
-                <div className="flex flex-col space-y-3">
+                <div className="flex flex-col space-y-2 sm:space-y-3">
                   <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-1">Adresse Email</label>
                   <div className="relative group">
                     <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors">
-                      <Icon name="mail" size="20px" />
+                      <Icon name="mail" size="18px" />
                     </div>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="john@example.com" className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-6 py-4 rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300" />
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="email@exemple.com" className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-11 sm:pl-12 pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300" />
                   </div>
                 </div>
 
-                <div className="flex flex-col space-y-3">
+                <div className="flex flex-col space-y-2 sm:space-y-3">
                   <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-1">Num. Téléphone</label>
                   <div className="relative group">
                     <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors">
-                      <Icon name="phone" size="20px" />
+                      <Icon name="phone" size="18px" />
                     </div>
-                    <input type="text" name="phone" value={formData.phone} onChange={handleChange} required placeholder="+228 90 00 00 00" className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-6 py-4 rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300" />
+                    <input type="text" name="phone" value={formData.phone} onChange={handleChange} required placeholder="Votre numéro" className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-11 sm:pl-12 pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300" />
                   </div>
                 </div>
 
-                <div className="flex flex-col space-y-3">
+                <div className="flex flex-col space-y-2 sm:space-y-3">
                   <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-1">Choix de Formation</label>
                   <div className="relative group h-full">
                     <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors z-10">
-                      <Icon name="menu_book" size="20px" />
+                      <Icon name="menu_book" size="18px" />
                     </div>
-                    <select name="subject" value={formData.subject} onChange={handleChange} className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-12 py-4 rounded-2xl outline-none transition-all font-bold text-secondary-dark appearance-none cursor-pointer h-[56px]">
+                    <select name="subject" value={formData.subject} onChange={handleChange} className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-11 sm:pl-12 pr-12 py-3 sm:py-4 rounded-xl sm:rounded-2xl outline-none transition-all font-bold text-secondary-dark appearance-none cursor-pointer h-[50px] sm:h-[56px] text-sm sm:text-base">
                       <option>Formation Entreprenariat</option>
                       <option>Formation Bureautique</option>
                       <option>Gestion & Comptabilité</option>
                       <option>Autre</option>
                     </select>
                     <div className="absolute inset-y-0 right-0 pr-5 flex items-center pointer-events-none text-gray-400 z-10">
-                      <Icon name="expand_more" size="20px" />
+                      <Icon name="expand_more" size="18px" />
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col space-y-2 sm:space-y-3">
                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-1">Message <span className="text-gray-300 normal-case tracking-normal">(optionnel)</span></label>
                 <div className="relative group">
                   <div className="absolute top-4 left-0 pl-5 pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors">
-                    <Icon name="edit_note" size="20px" />
+                    <Icon name="edit_note" size="18px" />
                   </div>
-                  <textarea name="message" value={formData.message} onChange={handleChange} rows={4} placeholder="Précisez vos attentes, votre niveau, vos disponibilités..." className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-12 pr-6 py-4 rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300 resize-none"></textarea>
+                  <textarea name="message" value={formData.message} onChange={handleChange} rows={3} placeholder="Dites-nous en plus..." className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-11 sm:pl-12 pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl outline-none transition-all font-medium text-secondary-dark placeholder-gray-300 resize-none text-sm sm:text-base"></textarea>
                 </div>
               </div>
 
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+              <button
                 type="submit"
                 disabled={status.loading}
-                className={`w-full ${status.loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-secondary-dark hover:bg-black'} text-white py-5 rounded-2xl font-bold text-[12px] uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all transform shadow-xl shadow-black/10 group mt-8`}
+                className={`w-full ${status.loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-primary hover:bg-blue-600'} text-white py-4 sm:py-5 rounded-xl sm:rounded-2xl font-bold text-[12px] uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all transform shadow-xl shadow-primary/20 group pb-4 sm:pb-5`}
               >
-                {status.loading ? "Envoi en cours..." : "Valider mon Inscription"} {!status.loading && <Icon name="arrow_forward" size="20px" className="group-hover:translate-x-2 transition-transform" />}
-              </motion.button>
+                {status.loading ? "Envoi..." : "S'inscrire Maintenant"} {!status.loading && <Icon name="arrow_forward" size="18px" className="group-hover:translate-x-2 transition-transform" />}
+              </button>
             </form>
           </div>
-        </motion.div>
+        </div>
       </section>
-    </motion.div>
+
+    </div>
   );
 };
 

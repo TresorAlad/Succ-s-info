@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import Counter from '../components/Counter';
 import Icon from '../components/Icon';
 
@@ -41,75 +40,41 @@ const About = () => {
     return () => clearInterval(timer);
   }, [carouselImages.length]);
 
-  const fadeUp = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.6 }
-  };
-
-
-
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.5 }}
-      className="pb-24"
-    >
+    <div className="pb-16 sm:pb-24">
       {/* Header */}
-      <section className="bg-secondary-dark text-white py-24 lg:py-32 relative overflow-hidden">
+      <section className="bg-secondary-dark text-white py-20 lg:py-32 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/10 -skew-x-12 transform translate-x-1/3"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center lg:text-left">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold mb-8">Notre Mission : Votre <span className="text-primary italic">Réussite Technologique</span></h1>
-            <p className="text-xl text-gray-300 max-w-2xl leading-relaxed">
+          <div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold mb-6 sm:mb-8">Notre Mission : Votre <span className="text-primary italic">Réussite Technologique</span></h1>
+            <p className="text-lg sm:text-xl text-gray-300 max-w-2xl leading-relaxed">
               Depuis plus de 10 ans, nous accompagnons les entreprises et les particuliers dans leur quotidien numérique avec une expertise pointue en maintenance et formation.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Intro & Values */}
-      <section className="py-24">
+      <section className="py-12 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-32">
-            <motion.div
-              {...fadeUp}
-              className="relative"
-              style={{ perspective: '1200px' }}
-            >
-              {/* 3D Stacked Cards Carousel */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16 sm:mb-32">
+            <div className="relative">
+              {/* 3D Stacked Cards Carousel Simplified */}
               <div className="relative w-full aspect-square max-w-md mx-auto">
                 {carouselImages.map((img, i) => {
                   const offset = (i - activeCard + carouselImages.length) % carouselImages.length;
                   const isFront = offset === 0;
                   const zIndex = carouselImages.length - offset;
-                  const scale = 1 - offset * 0.06;
-                  const translateX = offset * 25;
-                  const translateY = offset * -10;
-                  const rotateY = offset * -5;
-                  const opacity = offset > 2 ? 0 : 1 - offset * 0.2;
+                  const opacity = offset > 0 ? 0 : 1; // Simplified to only show front
+
+                  if (!isFront) return null;
 
                   return (
-                    <motion.div
+                    <div
                       key={i}
-                      animate={{
-                        scale,
-                        x: translateX,
-                        y: translateY,
-                        rotateY,
-                        opacity,
-                        zIndex,
-                      }}
-                      transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-                      className="absolute inset-0 rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white cursor-pointer"
-                      style={{ transformStyle: 'preserve-3d' }}
+                      className="absolute inset-0 rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white cursor-pointer transition-all duration-700"
+                      style={{ zIndex, opacity }}
                       onClick={() => setActiveCard(i)}
                     >
                       <img
@@ -117,23 +82,18 @@ const About = () => {
                         alt={`SuccesInfo ${i + 1}`}
                         className="w-full h-full object-cover"
                       />
-                      {/* Overlay only on front card */}
-                      {isFront && (
-                        <>
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                          <div className="absolute bottom-8 left-8 text-white">
-                            <span className="text-7xl font-black block mb-1 drop-shadow-lg">10</span>
-                            <span className="text-sm font-bold uppercase tracking-[0.25em] opacity-90">Ans de Service</span>
-                          </div>
-                        </>
-                      )}
-                    </motion.div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                      <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 text-white">
+                        <span className="text-6xl sm:text-7xl font-black block mb-1 drop-shadow-lg">10</span>
+                        <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] opacity-90">Ans de Service</span>
+                      </div>
+                    </div>
                   );
                 })}
               </div>
 
               {/* Dots indicator */}
-              <div className="flex justify-center gap-2 mt-8">
+              <div className="flex justify-center gap-2 mt-6 sm:mt-8">
                 {carouselImages.map((_, i) => (
                   <button
                     key={i}
@@ -145,137 +105,108 @@ const About = () => {
               </div>
 
               {/* Floating icon */}
-              <motion.div
-                animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-10 -right-6 bg-accent-orange p-12 rounded-3xl shadow-2xl hidden md:flex items-center justify-center border-4 border-white z-50"
-              >
-                <Icon name="handyman" size="56px" className="text-white" />
-              </motion.div>
-            </motion.div>
+              <div className="absolute -bottom-6 -right-4 sm:-bottom-10 sm:-right-6 bg-accent-orange p-8 sm:p-12 rounded-2xl sm:rounded-3xl shadow-2xl hidden md:flex items-center justify-center border-4 border-white z-50">
+                <Icon name="handyman" size="40px" className="text-white" />
+              </div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <span className="text-primary font-bold uppercase tracking-[0.3em] text-sm mb-4 block">Notre Identité</span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-secondary-dark mb-8 leading-tight">Expertise, Proximité et Partage</h2>
-              <p className="text-gray-500 mb-10 text-lg leading-relaxed">
-                <span className="font-bold text-secondary-dark">Le Succès Informatique</span> est un centre de ressources numériques dédié à l'excellence. Nous croyons que la maîtrise de l'outil informatique est la clé du succès professionnel aujourd'hui.
+            <div>
+              <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px] sm:text-sm mb-3 sm:mb-4 block">Notre Identité</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-secondary-dark mb-6 sm:mb-8 leading-tight">Expertise, Proximité et Partage</h2>
+              <p className="text-gray-500 mb-8 sm:mb-10 text-base sm:text-lg leading-relaxed font-medium">
+                <span className="font-bold text-secondary-dark font-display">Le Succès Informatique</span> est un centre de ressources numériques dédié à l'excellence. Nous croyons que la maîtrise de l'outil informatique est la clé du succès professionnel aujourd'hui.
               </p>
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {[
                   { title: "Maintenance Experte", desc: "Un diagnostic précis et des interventions rapides pour vos équipements.", icon: "settings_suggest" },
                   { title: "Pédagogie Adaptée", desc: "Des formations pas à pas pour maîtriser l'informatique, quel que soit votre niveau.", icon: "school" },
                   { title: "Service de Proximité", desc: "Un partenaire local de confiance, engagé dans la réussite de votre projet.", icon: "handshake" }
                 ].map((item, i) => (
-                  <motion.div
+                  <div
                     key={i}
-                    whileHover={{ x: 10 }}
-                    className="flex gap-6 items-start p-7 bg-white border border-gray-100 rounded-[2rem] hover:border-primary/20 transition-all group shadow-sm hover:shadow-xl"
+                    className="flex gap-4 sm:gap-6 items-start p-5 sm:p-7 bg-white border border-gray-100 rounded-[1.5rem] sm:rounded-[2rem] hover:border-primary/20 transition-all group shadow-sm hover:shadow-xl"
                   >
-                    <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors">
-                      <Icon name={item.icon} className="text-primary group-hover:text-white transition-colors" size="28px" />
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-50 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors">
+                      <Icon name={item.icon} className="text-primary group-hover:text-white transition-colors" size="24px" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-xl mb-1 group-hover:text-primary transition-colors">{item.title}</h4>
-                      <p className="text-gray-500 leading-relaxed">{item.desc}</p>
+                      <h4 className="font-bold text-lg sm:text-xl mb-1 group-hover:text-primary transition-colors">{item.title}</h4>
+                      <p className="text-gray-500 text-sm sm:text-base leading-relaxed">{item.desc}</p>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           </div>
 
-          {/* Stats Section - PROFESSIONAL RE-FORM */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
+          {/* Stats Section */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-32">
             {[
               { label: "Années d'Expérience", value: "10+", icon: "history", color: "from-blue-500 to-primary", bg: "bg-blue-50" },
               { label: "Projets Réussis", value: "200+", icon: "task_alt", iconColor: "text-accent-green", bg: "bg-green-50" },
               { label: "Apprenants Formés", value: "1000+", icon: "groups", iconColor: "text-accent-orange", bg: "bg-orange-50" }
             ].map((stat, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.8 }}
-                className="group relative bg-white p-10 rounded-[3rem] border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] transition-all overflow-hidden text-center"
+                className="group relative bg-white p-8 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] transition-all overflow-hidden text-center"
               >
                 <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-transparent via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className={`w-20 h-20 mx-auto ${stat.bg} rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 shadow-sm`}>
-                  <Icon name={stat.icon} className={stat.iconColor || "text-primary"} size="40px" />
+                <div className={`w-16 h-16 sm:w-20 sm:h-20 mx-auto ${stat.bg} rounded-2xl sm:rounded-3xl flex items-center justify-center mb-6 sm:mb-8 group-hover:scale-110 transition-transform duration-500 shadow-sm`}>
+                  <Icon name={stat.icon} className={stat.iconColor || "text-primary"} size="32px" />
                 </div>
-                <div className="flex flex-col gap-2">
-                  <span className="text-5xl sm:text-6xl font-display font-black text-secondary-dark tracking-tighter block group-hover:text-primary transition-colors">
+                <div className="flex flex-col gap-1 sm:gap-2">
+                  <span className="text-4xl sm:text-6xl font-display font-black text-secondary-dark tracking-tighter block group-hover:text-primary transition-colors">
                     <Counter value={stat.value} />
                   </span>
-                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 group-hover:text-secondary-dark transition-colors">
+                  <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 group-hover:text-secondary-dark transition-colors">
                     {stat.label}
                   </span>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
           {/* Vision Section */}
-          <motion.div
-            {...fadeUp}
-            className="bg-blue-50/50 rounded-[3rem] p-12 lg:p-20 relative overflow-hidden border border-blue-100/50"
-          >
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div className="bg-blue-50/50 rounded-[2rem] sm:rounded-[3rem] p-8 lg:p-20 relative overflow-hidden border border-blue-100/50">
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <div>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-secondary-dark mb-8">Vision 2030</h2>
-                <p className="text-gray-600 text-lg leading-relaxed mb-10">
+                <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-bold text-secondary-dark mb-6 sm:mb-8">Vision 2030</h2>
+                <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-8 sm:mb-10 font-medium">
                   Notre ambition est de devenir le pôle de référence en formation numérique et maintenance informatique au niveau régional, en créant un environnement propice à l'innovation pour tous.
                 </p>
-                <ul className="space-y-5">
+                <ul className="space-y-4 sm:space-y-5">
                   {[
                     "Leadership régional en formation bureautique",
                     "Expansion de nos services de maintenance",
                     "Solutions numériques accessibles et innovantes"
                   ].map((text, i) => (
-                    <motion.li
+                    <li
                       key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.3 + i * 0.1 }}
-                      className="flex items-center gap-4 font-bold text-secondary-dark group"
+                      className="flex items-center gap-3 sm:gap-4 font-bold text-secondary-dark group text-sm sm:text-base"
                     >
-                      <span className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary transition-colors">
-                        <Icon name="check" className="text-primary group-hover:text-white transition-colors" size="16px" />
+                      <span className="w-6 h-6 sm:w-8 sm:h-8 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary transition-colors">
+                        <Icon name="check" className="text-primary group-hover:text-white transition-colors" size="14px" />
                       </span>
                       {text}
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
               </div>
               <div className="flex justify-center w-full">
-                <div className="bg-white p-6 sm:p-10 rounded-[2.5rem] shadow-2xl w-full max-w-sm border border-blue-100 flex flex-col items-center text-center relative overflow-hidden" style={{ minHeight: '320px' }}>
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeSlide}
-                      initial={{ opacity: 0, x: 40 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -40 }}
-                      transition={{ duration: 0.4 }}
-                      className="flex flex-col items-center text-center"
-                    >
-                      <div className={`w-20 h-20 ${suggestions[activeSlide].bg} rounded-3xl flex items-center justify-center mb-8`}>
-                        <Icon name={suggestions[activeSlide].icon} className={suggestions[activeSlide].iconColor} size="40px" />
-                      </div>
-                      <h3 className="font-bold text-2xl mb-4 text-secondary-dark">{suggestions[activeSlide].title}</h3>
-                      <p className="text-gray-400 text-sm mb-8 leading-relaxed">{suggestions[activeSlide].desc}</p>
-                    </motion.div>
-                  </AnimatePresence>
-                  <div className="flex gap-3 mt-auto">
+                <div className="bg-white p-6 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] shadow-2xl w-full max-w-sm border border-blue-100 flex flex-col items-center text-center relative overflow-hidden" style={{ minHeight: '320px' }}>
+                  <div className="flex flex-col items-center text-center">
+                    <div className={`w-16 h-16 sm:w-20 sm:h-20 ${suggestions[activeSlide].bg} rounded-2xl sm:rounded-3xl flex items-center justify-center mb-6 sm:mb-8`}>
+                      <Icon name={suggestions[activeSlide].icon} className={suggestions[activeSlide].iconColor} size="32px" />
+                    </div>
+                    <h3 className="font-bold text-xl sm:text-2xl mb-3 sm:mb-4 text-secondary-dark">{suggestions[activeSlide].title}</h3>
+                    <p className="text-gray-400 text-xs sm:text-sm mb-6 sm:mb-8 leading-relaxed font-medium">{suggestions[activeSlide].desc}</p>
+                  </div>
+                  <div className="flex gap-2 sm:gap-3 mt-auto">
                     {suggestions.map((_, i) => (
                       <button
                         key={i}
                         onClick={() => setActiveSlide(i)}
-                        className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${i === activeSlide ? 'w-10 bg-primary' : 'w-4 bg-blue-200 hover:bg-blue-300'
+                        className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 cursor-pointer ${i === activeSlide ? 'w-8 sm:w-10 bg-primary' : 'w-3 sm:w-4 bg-blue-200 hover:bg-blue-300'
                           }`}
                       />
                     ))}
@@ -284,11 +215,11 @@ const About = () => {
               </div>
             </div>
             <div className="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-    </motion.div>
+    </div>
   );
 };
 

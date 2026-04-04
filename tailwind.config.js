@@ -21,6 +21,15 @@ export default {
         sans: ['"Open Sans"', 'Roboto', 'sans-serif'],
         display: ['Poppins', 'Montserrat', 'sans-serif'],
       },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-33.33%)' },
+        }
+      },
+      animation: {
+        marquee: 'marquee 20s linear infinite',
+      },
     },
   },
   plugins: [],

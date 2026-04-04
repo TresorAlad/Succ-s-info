@@ -1,91 +1,97 @@
-# 🚀 CyberSuccess Portfolio
+# 🚀 Le Succès Informatique - Portfolio
 
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
+[![Lucide React](https://img.shields.io/badge/Lucide_React-FFB11B?style=for-the-badge&logo=lucide&logoColor=white)](https://lucide.dev/)
 
-Welcome to the **CyberSuccess** portfolio project. This is a high-performance, modern, and professional portfolio website built using the latest web technologies to showcase services, projects, and expertise with premium aesthetics and smooth animations.
+Bienvenue sur le projet portfolio de **Le Succès Informatique**. Ce site est une plateforme moderne, haute performance et professionnelle conçue pour présenter nos services, formations et expertise en informatique avec une esthétique premium et une fluidité optimale.
 
-### 🛡️ About CyberSuccess
-CyberSuccess is a specialized center focused on the future of digital training and IT security. The project aims to provide:
-- **IT Maintenance**: Audits, vulnerability scans, and network security.
-- **IT Training**: Certified training in office tools, web technologies, and cyber-hygiene.
-- **Digital Support**: Website creation, SEO optimization, and strategic consulting.
-
----
-
-## ✨ Key Features
-
--   **💎 Premium Design**: A modern, clean interface with a professional color palette and glassmorphism effects.
--   **🎬 Professional Animations**: Integrated with `Framer Motion` for smooth page transitions, entrance animations, and interactive elements.
--   **📱 Fully Responsive**: Optimized for all devices, from desktops to mobile phones.
--   **🧭 Seamless Navigation**: Multi-page structure powered by `React Router` with exit/entrance transition logic.
--   **📊 Dynamic UI Components**: Includes animated counters, a custom professional loader, and a categorized portfolio display.
--   **🎨 Google Material Symbols**: High-quality iconography for a professional corporate feel.
+### 🛡️ À propos de Le Succès Informatique
+Basé à Hahotoé (Togo), **Le Succès Informatique** est un centre spécialisé dans l'accompagnement numérique et la formation. Nos missions principales :
+-   **Maintenance Informatique** : Audit, dépannage matériel et logiciel, sécurité réseau.
+-   **Formations Certifiées** : Bureautique (Office), Entreprenariat, Gestion & Comptabilité.
+-   **Solutions Digitales** : Création de sites web, SEO et conseil stratégique.
+-   **Vente de Matériel** : Fourniture de solutions informatiques adaptées.
 
 ---
 
-## 🛠️ Technology Stack
+## ✨ Points Forts du Projet
 
--   **Frontend**: React.js 18
--   **Build Tool**: Vite (Lightning Fast HMR)
--   **Styling**: Tailwind CSS (Utility-first framework)
--   **Animations**: Framer Motion
--   **Routing**: React Router DOM (v6)
--   **Icons**: Lucide React & Google Material Symbols
+-   **⚡ Performance Optimisée** : Architecture légère sans dépendances lourdes (Framer Motion supprimé) pour un chargement instantané, même sur les connexions lentes.
+-   **📱 Mobile-First & Compact** : Interface responsive méticuleusement ajustée pour une expérience utilisateur fluide et sans scroll excessif sur smartphone.
+-   **💎 Design Premium** : Esthétique moderne avec effets de flou (backdrop-blur), glassmorphism et une palette de couleurs professionnelle.
+-   **📧 Système de Contact Intégré** : Formulaires fonctionnels avec notifications par email via Nodemailer.
+-   **🎨 Iconographie SVG Centralisée** : Utilisation de `Lucide React` pour des icônes vectorielles nettes et performantes.
 
 ---
 
-## 🚀 Getting Started
+## 🛠️ Stack Technique
 
-To run this project locally, follow these simple steps:
+-   **Frontend** : [React.js 18](https://reactjs.org/)
+-   **Outil de Build** : [Vite](https://vitejs.dev/) (HMR ultra-rapide)
+-   **Styling** : [Tailwind CSS](https://tailwindcss.com/) (Framework utilitaire)
+-   **Icons** : [Lucide React](https://lucide.dev/)
+-   **Routing** : [React Router DOM (v6)](https://reactrouter.com/)
+-   **Backend (Notifications)** : Nodemailer
 
-### 1. Clone the repository
+---
+
+## 🚀 Installation Locale
+
+Pour lancer ce projet sur votre machine, suivez ces étapes :
+
+### 1. Cloner le dépôt
 ```bash
-# If you have git configured
-git clone <repository-url>
+git clone <url-du-depot>
 cd succes
 ```
 
-### 2. Install dependencies
+### 2. Installer les dépendances
 ```bash
 npm install
 ```
 
-### 3. Run the development server
+### 3. Configurer les variables d'environnement
+Créez un fichier `.env` à la racine pour la configuration Nodemailer (si applicable pour les tests backend) :
+```env
+VITE_EMAIL_USER=votre-email
+VITE_EMAIL_PASS=votre-mot-de-pass
+```
+
+### 4. Lancer le serveur de développement
 ```bash
 npm run dev
 ```
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+Accédez à [http://localhost:5173](http://localhost:5173) dans votre navigateur.
 
-### 4. Build for production
+### 5. Build pour la production
 ```bash
 npm run build
 ```
 
 ---
 
-## 📂 Project Structure
+## 📂 Structure du Projet
 
 ```text
 ├── src/
-│   ├── components/      # Reusable UI components (Loader, Counter, etc.)
-│   ├── pages/           # Page views (Home, About, Portfolio, etc.)
-│   ├── layouts/         # Common layout structures
-│   ├── assets/          # Static images and brand assets
-│   ├── App.jsx          # Root component & Route definitions
-│   └── main.jsx         # Application entry point
-├── public/              # Static files
-└── tailwind.config.js   # Custom design tokens (Colors, Fonts)
+│   ├── components/      # Composants UI réutilisables (Navbar, Icon, Loader, etc.)
+│   ├── pages/           # Pages de l'application (Home, About, Services, etc.)
+│   ├── layouts/         # Structures de mise en page commune
+│   ├── assets/          # Images statiques et ressources de marque
+│   ├── App.jsx          # Composant racine et définitions des routes
+│   └── main.jsx         # Point d'entrée de l'application
+├── public/              # Fichiers statiques (favicon, transparent.png)
+└── tailwind.config.js   # Configuration des jetons de design (Couleurs, Animations)
 ```
 
 ---
 
-## 📝 License
+## 📝 Licence
 
-This project is private and intended for the **CyberSuccess** organization.
+Ce projet est la propriété de **Le Succès Informatique**. Toute reproduction sans autorisation est interdite.
 
 ---
 
-Developed with ❤️ by **Antigravity AI** for **CyberSuccess**.
+Développé avec ❤️ par **Antigravity AI** pour **Le Succès Informatique**.

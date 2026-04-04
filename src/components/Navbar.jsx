@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
 import Icon from './Icon';
 
 const Navbar = () => {
@@ -22,16 +21,12 @@ const Navbar = () => {
     { title: 'Contact', path: '/contact', icon: 'mail' },
   ];
 
-
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 py-4 lg:px-8 lg:py-4 pointer-events-none">
-      <motion.nav
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 py-3 lg:px-8 lg:py-4 pointer-events-none">
+      <nav
         className={`max-w-7xl mx-auto pointer-events-auto transition-all duration-500 lg:border lg:border-white/40 lg:shadow-[0_20px_40px_rgba(0,0,0,0.05)] ${isOpen ? 'bg-white/90 backdrop-blur-3xl rounded-[2rem] shadow-2xl border border-white/40' : 'bg-transparent lg:rounded-full'} ${scrolled
-          ? 'lg:bg-white/70 lg:backdrop-blur-2xl py-1.5 lg:py-2'
-          : 'lg:bg-white/40 lg:backdrop-blur-lg py-2 lg:py-2.5'
+          ? 'lg:bg-white/70 lg:backdrop-blur-2xl py-1 lg:py-2'
+          : 'lg:bg-white/40 lg:backdrop-blur-lg py-1.5 lg:py-2.5'
           }`}
       >
         <div className="px-6 lg:px-10">
@@ -66,8 +61,7 @@ const Navbar = () => {
                     <>
                       {link.title}
                       {isActive && (
-                        <motion.div
-                          layoutId="navUnderlinePill"
+                        <div
                           className="absolute bottom-0 left-5 right-5 h-[3px] bg-primary rounded-full"
                         />
                       )}
@@ -102,43 +96,33 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Dropdown */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="lg:hidden bg-white/80 backdrop-blur-2xl overflow-hidden rounded-b-[2rem] border-t border-gray-100/50"
-            >
-              <div className="px-6 py-10 space-y-3">
-                {navLinks.map((link, i) => (
-                  <motion.div
-                    key={link.path}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
+        {isOpen && (
+          <div
+            className="lg:hidden bg-white/80 backdrop-blur-2xl overflow-hidden rounded-b-[2rem] border-t border-gray-100/50"
+          >
+            <div className="px-6 py-8 space-y-3">
+              {navLinks.map((link) => (
+                <div key={link.path}>
+                  <NavLink
+                    to={link.path}
+                    onClick={() => setIsOpen(false)}
+                    className={({ isActive }) =>
+                      `flex items-center justify-between px-6 py-4 rounded-full text-lg font-black uppercase tracking-widest transition-all ${isActive ? 'bg-primary text-white shadow-xl shadow-blue-500/20' : 'text-gray-500 hover:bg-gray-50'
+                      }`
+                    }
                   >
-                    <NavLink
-                      to={link.path}
-                      onClick={() => setIsOpen(false)}
-                      className={({ isActive }) =>
-                        `flex items-center justify-between px-6 py-4 rounded-full text-lg font-black uppercase tracking-widest transition-all ${isActive ? 'bg-primary text-white shadow-xl shadow-blue-500/20' : 'text-gray-500 hover:bg-gray-50'
-                        }`
-                      }
-                    >
-                      <div className="flex items-center gap-5">
-                        <Icon name={link.icon} size="24px" />
-                        {link.title}
-                      </div>
-                      <Icon name="arrow_right_alt" size="24px" />
-                    </NavLink>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.nav>
+                    <div className="flex items-center gap-5">
+                      <Icon name={link.icon} size="24px" />
+                      {link.title}
+                    </div>
+                    <Icon name="arrow_right_alt" size="24px" />
+                  </NavLink>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </nav>
     </header>
   );
 };

@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import Icon from '../components/Icon';
 
 const Services = () => {
   const [activeMobileCat, setActiveMobileCat] = useState(null);
-
-
 
   const categories = [
     {
@@ -57,43 +54,18 @@ const Services = () => {
     }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.9, y: 20 },
-    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
-  };
-
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0, scale: 0.98 }}
-      className="bg-secondary-light min-h-screen"
-    >
+    <div className="bg-secondary-light min-h-screen">
       {/* Header */}
-      <section className="bg-white py-24 lg:py-32 shadow-sm relative overflow-hidden">
+      <section className="bg-white py-20 lg:py-32 shadow-sm relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_10%_20%,rgba(37,99,235,0.05)_0%,transparent_50%)]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-secondary-dark mb-8"
-          >
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-secondary-dark mb-6 sm:mb-8">
             Nos Services <span className="text-primary italic">Informatiques</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-gray-500 max-w-3xl mx-auto mb-12 leading-relaxed font-medium"
-          >
+          </h1>
+          <p className="text-lg sm:text-xl text-gray-500 max-w-3xl mx-auto mb-10 sm:mb-12 leading-relaxed font-medium">
             Un accompagnement complet pour vos besoins quotidiens : de la réparation de votre matériel à votre formation continue.
-          </motion.p>
+          </p>
           {/* Desktop Features */}
           <div className="hidden sm:flex justify-center items-center gap-8 text-sm font-bold uppercase tracking-[0.2em] text-gray-400 w-full mb-4">
             {[
@@ -101,33 +73,22 @@ const Services = () => {
               { icon: "schedule", color: "text-accent-orange", label: "Disponibilité" },
               { icon: "thumb_up", color: "text-accent-green", label: "Satisfaction" }
             ].map((feature, i) => (
-              <motion.span
+              <span
                 key={i}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5 + i * 0.1 }}
                 className="flex items-center gap-3 shrink-0"
               >
                 <Icon name={feature.icon} className={feature.color} size="20px" /> {feature.label}
-              </motion.span>
+              </span>
             ))}
           </div>
 
           {/* Mobile Animated Marquee Features */}
           <div className="sm:hidden flex overflow-hidden w-full relative">
-            {/* Fading edges for marquee */}
             <div className="absolute top-0 left-0 w-8 h-full bg-gradient-to-r from-white to-transparent z-10"></div>
             <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-white to-transparent z-10"></div>
             
-            <motion.div
-              animate={{ x: ["0%", "-33.33%"] }}
-              transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
-              className="flex items-center gap-8 w-max text-xs font-bold uppercase tracking-[0.2em] text-gray-400 py-2"
-            >
+            <div className="flex items-center gap-8 w-max text-xs font-bold uppercase tracking-[0.2em] text-gray-400 py-2 animate-[marquee_20s_linear_infinite]">
               {[
-                { icon: "verified", color: "text-primary", label: "Expertise" },
-                { icon: "schedule", color: "text-accent-orange", label: "Disponibilité" },
-                { icon: "thumb_up", color: "text-accent-green", label: "Satisfaction" },
                 { icon: "verified", color: "text-primary", label: "Expertise" },
                 { icon: "schedule", color: "text-accent-orange", label: "Disponibilité" },
                 { icon: "thumb_up", color: "text-accent-green", label: "Satisfaction" },
@@ -139,44 +100,40 @@ const Services = () => {
                   <Icon name={feature.icon} className={feature.color} size="16px" /> {feature.label}
                 </span>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-blue-400 to-accent-green opacity-30"></div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-40">
+      <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="space-y-24 sm:space-y-40">
           {categories.map((cat, idx) => (
-            <div key={cat.id} id={cat.id} className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-              <motion.div
-                initial={{ opacity: 0, x: idx % 2 === 0 ? -40 : 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8 }}
+            <div key={cat.id} id={cat.id} className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+              <div
                 className={`${idx % 2 !== 0 ? 'lg:order-last' : ''} lg:col-span-5 lg:sticky lg:top-32`}
               >
-                <div className="w-24 h-24 bg-white rounded-3xl shadow-xl flex items-center justify-center mb-10 border border-gray-100 rotate-3 transform group hover:rotate-0 transition-transform">
-                  <Icon name={cat.icon} className="text-primary text-secondary-dark" size="48px" />
+                <div className="w-16 h-16 sm:w-24 sm:h-24 bg-white rounded-2xl sm:rounded-3xl shadow-xl flex items-center justify-center mb-6 sm:mb-10 border border-gray-100 rotate-3 transform group hover:rotate-0 transition-transform">
+                  <Icon name={cat.icon} className="text-primary text-secondary-dark" size="32px" />
                 </div>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-secondary-dark mb-8 leading-tight">{cat.title}</h2>
-                <p className="text-gray-500 text-lg leading-relaxed mb-10">
-                  Solutions dédiées à la <span className="text-primary font-bold">{cat.title.toLowerCase()}</span> pour vous garantir un environnement numérique stable et performant.
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-secondary-dark mb-6 sm:mb-8 leading-tight">{cat.title}</h2>
+                <p className="text-gray-500 text-base sm:text-lg leading-relaxed mb-8 sm:mb-10 font-medium">
+                  Solutions dédiées à la <span className="text-primary font-bold font-display">{cat.title.toLowerCase()}</span> pour vous garantir un environnement numérique stable et performant.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   {cat.buttons.map((btn, bi) => (
-                    <motion.div key={bi} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <div key={bi} className="w-full sm:w-auto">
                       <Link
                         to={btn.to}
                         className={btn.primary
-                          ? "bg-primary text-white px-10 py-4 rounded-2xl font-bold shadow-lg shadow-blue-500/20 hover:shadow-xl transition-all active:scale-95 flex items-center gap-3"
-                          : "text-primary font-bold px-10 py-4 rounded-2xl border-2 border-primary/20 hover:border-primary hover:bg-white transition-all flex items-center gap-3"
+                          ? "w-full bg-primary text-white px-8 sm:px-10 py-4 rounded-2xl font-bold shadow-lg shadow-blue-500/20 hover:shadow-xl transition-all active:scale-95 flex items-center justify-center gap-3"
+                          : "w-full text-primary font-bold px-8 sm:px-10 py-4 rounded-2xl border-2 border-primary/20 hover:border-primary hover:bg-white transition-all flex items-center justify-center gap-3"
                         }
                       >
-                        <Icon name={btn.icon} size="24px" /> {btn.label}
+                        <Icon name={btn.icon} size="20px" /> {btn.label}
                       </Link>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
 
@@ -185,41 +142,36 @@ const Services = () => {
                   onClick={() => setActiveMobileCat(activeMobileCat === cat.id ? null : cat.id)}
                   className="lg:hidden mt-8 flex items-center justify-between w-full bg-blue-50/50 p-5 rounded-2xl font-bold text-primary border border-blue-100 hover:bg-blue-50 transition-all active:scale-95 shadow-sm"
                 >
-                  <span className="text-sm uppercase tracking-widest">{activeMobileCat === cat.id ? "Masquer les détails" : "Voir plus de détails"}</span>
-                  <Icon name={activeMobileCat === cat.id ? "expand_less" : "expand_more"} size="24px" />
+                  <span className="text-[10px] uppercase tracking-widest">{activeMobileCat === cat.id ? "Masquer les détails" : "Voir plus de détails"}</span>
+                  <Icon name={activeMobileCat === cat.id ? "expand_less" : "expand_more"} size="20px" />
                 </button>
-              </motion.div>
+              </div>
 
               <div className="lg:col-span-1 hidden lg:block h-full border-r border-dashed border-gray-200"></div>
 
-              <motion.div
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className={`lg:col-span-6 grid-cols-1 md:grid-cols-2 gap-8 lg:grid ${activeMobileCat === cat.id ? 'grid' : 'hidden'}`}
+              <div
+                className={`lg:col-span-6 grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:grid ${activeMobileCat === cat.id ? 'grid' : 'hidden'}`}
               >
                 {cat.items.map((item, i) => (
-                  <motion.div
+                  <div
                     key={i}
-                    variants={itemVariants}
-                    whileHover={{ y: -8, borderColor: "#2563EB", boxShadow: "0 20px 40px rgba(0,0,0,0.06)" }}
-                    className="bg-white p-10 rounded-[2.5rem] border border-gray-100 transition-all group"
+                    className="bg-white p-8 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 transition-all group hover:translate-y-[-8px] hover:border-primary/20 hover:shadow-xl"
                   >
-                    <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center mb-8 group-hover:bg-primary transition-colors duration-500">
-                      <Icon name="verified" className="text-primary group-hover:text-white transition-colors" size="28px" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-blue-50 flex items-center justify-center mb-6 sm:mb-8 group-hover:bg-primary transition-colors duration-500">
+                      <Icon name="verified" className="text-primary group-hover:text-white transition-colors" size="24px" />
                     </div>
-                    <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">{item.name}</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed mb-6">{item.desc}</p>
+                    <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 group-hover:text-primary transition-colors">{item.name}</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed mb-6 font-medium">{item.desc}</p>
                     <div className="h-1 w-12 bg-gray-100 rounded-full group-hover:w-24 group-hover:bg-primary transition-all duration-500"></div>
-                  </motion.div>
+                  </div>
                 ))}
-              </motion.div>
+              </div>
             </div>
           ))}
         </div>
       </section>
-    </motion.div>
+
+    </div>
   );
 };
 
