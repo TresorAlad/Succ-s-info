@@ -43,23 +43,6 @@ const Home = () => {
               Contact
             </Link>
           </div>
-
-          {/* Floating Stats */}
-          <div className="hidden sm:flex flex-wrap justify-center gap-6 lg:gap-10">
-            {[
-              { value: "10+", label: "Années d'expérience", color: "text-primary" },
-              { value: "1000+", label: "Apprenants formés", color: "text-accent-green" },
-              { value: "95%", label: "Satisfaction client", color: "text-accent-orange" }
-            ].map((stat, i) => (
-              <div
-                key={i}
-                className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-2xl px-8 py-5 hover:bg-white/[0.06] hover:border-white/10 transition-all group"
-              >
-                <span className={`text-2xl sm:text-3xl lg:text-4xl font-black block tracking-tighter ${stat.color}`}>{stat.value}</span>
-                <span className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-black group-hover:text-gray-400 transition-colors">{stat.label}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Scroll Indicator */}

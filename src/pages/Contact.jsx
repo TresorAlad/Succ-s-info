@@ -17,7 +17,7 @@ const Contact = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ type: 'contact', ...formData })
       });
-      
+
       if (res.ok) {
         setStatus({ loading: false, success: true, error: '' });
         setFormData({ name: '', email: '', subject: 'Maintenance Informatique', message: '' });
@@ -76,7 +76,7 @@ const Contact = () => {
           {/* Left panel - Form */}
           <div className="lg:w-7/12 p-8 sm:p-12 lg:p-16 bg-white relative order-2 lg:order-1">
             <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_100%_0%,rgba(37,99,235,0.03)_0%,transparent_50%)]"></div>
-            
+
             <h3 className="text-2xl sm:text-3xl font-display font-black text-secondary-dark mb-6 sm:mb-10">
               Envoyez-nous un <br className="sm:hidden" /> <span className="text-primary italic text-3xl sm:text-4xl font-display">Message</span>
             </h3>
@@ -178,7 +178,7 @@ const Contact = () => {
                   <div className="bg-black/20 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 shadow-sm">
                     <Icon name="distance" size="16px" className="text-accent-green" />
                   </div>
-                  <span className="font-bold text-xs sm:text-sm">Hahotoé, Togo — Lycée</span>
+                  <span className="font-bold text-xs sm:text-sm">Hahotoé, Togo (Près du Lycée Hahotoé)</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="bg-black/20 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 shadow-sm">

@@ -9,19 +9,19 @@ const Footer = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email) return;
-    
+
     setStatus({ loading: true, success: false, error: '' });
-    
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          type: 'newsletter', 
-          email: email 
+        body: JSON.stringify({
+          type: 'newsletter',
+          email: email
         })
       });
-      
+
       if (res.ok) {
         setStatus({ loading: false, success: true, error: '' });
         setEmail('');
@@ -69,8 +69,8 @@ const Footer = () => {
             <ul className="space-y-4">
               {['Accueil', 'À propos', 'Nos Services', 'Contact', 'Formation'].map((item, idx) => (
                 <li key={idx}>
-                  <Link 
-                    to={item === 'Accueil' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`} 
+                  <Link
+                    to={item === 'Accueil' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
                     className="text-gray-400 hover:text-primary transition-all text-sm font-bold flex items-center gap-2 group"
                   >
                     <div className="w-1.5 h-1.5 bg-gray-600 rounded-full group-hover:bg-primary transition-colors"></div>
@@ -119,7 +119,7 @@ const Footer = () => {
           <div className="hidden sm:block bg-white/5 p-8 rounded-3xl border border-white/10">
             <h4 className="text-base font-black uppercase tracking-widest text-white mb-4">Newsletter</h4>
             <p className="text-gray-400 text-xs leading-relaxed mb-6 font-medium">Recevez nos astuces, actualités et offres exclusives par e-mail.</p>
-            
+
             <form onSubmit={handleSubmit} className="space-y-3">
               <div className="relative group">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-500 group-focus-within:text-primary transition-colors">
@@ -134,7 +134,7 @@ const Footer = () => {
                   className="bg-black/20 border-2 border-white/5 text-white px-4 py-3 pl-11 rounded-2xl focus:border-primary/30 focus:ring-4 focus:ring-primary/10 focus:outline-none placeholder-gray-600 text-xs w-full transition-all"
                 />
               </div>
-              <button 
+              <button
                 type="submit"
                 disabled={status.loading}
                 className={`w-full ${status.loading ? 'bg-gray-600' : 'bg-primary hover:bg-blue-600'} text-white py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all flex items-center justify-center gap-3 shadow-lg shadow-primary/20 active:scale-95`}
@@ -145,7 +145,7 @@ const Footer = () => {
                   </>
                 )}
               </button>
-              
+
               {status.success && (
                 <p className="text-accent-green text-[10px] font-bold text-center animate-bounce mt-3">Inscription réussie ! Merci.</p>
               )}
@@ -161,7 +161,7 @@ const Footer = () => {
             © {new Date().getFullYear()} <span className="text-primary font-black">LE SUCCÈS INFORMATIQUE</span>. Tous droits réservés.
           </p>
           <p className="text-gray-600 text-[9px] uppercase tracking-[0.2em] font-medium">
-            Développé par <span className="text-gray-400">Antigravity AI</span>
+            Développé par <span className="text-gray-400">Trésor ALADE</span>
           </p>
         </div>
       </div>

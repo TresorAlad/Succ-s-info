@@ -18,7 +18,7 @@ Basé à Hahotoé (Togo), **Le Succès Informatique** est un centre spécialisé
 
 ## ✨ Points Forts du Projet
 
--   **⚡ Performance Optimisée** : Architecture légère sans dépendances lourdes (Framer Motion supprimé) pour un chargement instantané, même sur les connexions lentes.
+-   **⚡ Performance Optimisée** : Architecture légère sans dépendances lourdes pour un chargement instantané, même sur les connexions lentes.
 -   **📱 Mobile-First & Compact** : Interface responsive méticuleusement ajustée pour une expérience utilisateur fluide et sans scroll excessif sur smartphone.
 -   **💎 Design Premium** : Esthétique moderne avec effets de flou (backdrop-blur), glassmorphism et une palette de couleurs professionnelle.
 -   **📧 Système de Contact Intégré** : Formulaires fonctionnels avec notifications par email via Nodemailer.
@@ -55,8 +55,8 @@ npm install
 ### 3. Configurer les variables d'environnement
 Créez un fichier `.env` à la racine pour la configuration Nodemailer (si applicable pour les tests backend) :
 ```env
-VITE_EMAIL_USER=votre-email
-VITE_EMAIL_PASS=votre-mot-de-pass
+SMTP_EMAIL=votre-email
+SMTP_PASSWORD=votre-mot-de-pass
 ```
 
 ### 4. Lancer le serveur de développement
@@ -94,4 +94,4 @@ Ce projet est la propriété de **Le Succès Informatique**. Toute reproduction 
 
 ---
 
-Développé avec ❤️ par **Antigravity AI** pour **Le Succès Informatique**.
+Développé avec ❤️ par **Trésor ALADE** pour **Le Succès Informatique**.

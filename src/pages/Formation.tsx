@@ -15,8 +15,8 @@ const Formation = () => {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          type: 'inscription', 
+        body: JSON.stringify({
+          type: 'inscription',
           name: formData.name,
           email: formData.email,
           subject: formData.subject,
@@ -24,7 +24,7 @@ const Formation = () => {
           formationDetails: { phone: formData.phone }
         })
       });
-      
+
       if (res.ok) {
         setStatus({ loading: false, success: true, error: '' });
         setFormData({ name: '', email: '', phone: '', subject: 'Formation Entreprenariat', message: '' });
@@ -79,7 +79,7 @@ const Formation = () => {
       <section className="py-8 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {courses.map((course, idx) => (
-            <div 
+            <div
               key={idx}
               className="bg-white p-6 sm:p-10 rounded-[1.5rem] sm:rounded-[2.5rem] border border-gray-100 transition-all group flex flex-col items-center text-center hover:translate-y-[-8px] hover:shadow-xl"
             >
@@ -101,18 +101,18 @@ const Formation = () => {
           <div className="lg:w-5/12 bg-primary relative p-8 sm:p-12 lg:p-16 text-white overflow-hidden flex flex-col justify-center">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-[80px]"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/20 rounded-full blur-[80px]"></div>
-            
+
             <div className="relative z-10">
               <div className="bg-white/20 w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center mb-6 sm:mb-8 backdrop-blur-sm border border-white/30 shadow-sm">
                 <Icon name="school" size="24px" />
               </div>
               <h2 className="text-2xl sm:text-4xl font-display font-black mb-3 sm:mb-6 leading-tight">
-                Passez à la <br/> <span className="italic text-blue-200">vitesse supérieure</span>
+                Passez à la <br /> <span className="italic text-blue-200">vitesse supérieure</span>
               </h2>
               <p className="text-blue-100 mb-6 sm:mb-10 text-sm sm:text-lg leading-relaxed border-l-4 border-accent-orange pl-4 font-medium">
                 Remplissez ce formulaire pour réserver votre place. Nos conseillers vous contacteront sous 24h ouvrées pour finaliser votre inscription.
               </p>
-              
+
               <div className="space-y-4 sm:space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="bg-black/20 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 shadow-sm">
@@ -133,7 +133,7 @@ const Formation = () => {
           {/* Right panel - Form */}
           <div className="lg:w-7/12 p-8 sm:p-12 lg:p-16 bg-white relative">
             <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_100%_0%,rgba(37,99,235,0.03)_0%,transparent_50%)]"></div>
-            
+
             <h3 className="text-2xl sm:text-3xl font-display font-black text-secondary-dark mb-8 sm:mb-10">
               Formulaire <span className="text-primary italic text-3xl sm:text-4xl font-display">d'inscription</span>
             </h3>
@@ -190,8 +190,8 @@ const Formation = () => {
                       <Icon name="menu_book" size="18px" />
                     </div>
                     <select name="subject" value={formData.subject} onChange={handleChange} className="w-full bg-gray-50 border-2 border-transparent focus:bg-white focus:border-primary/30 focus:ring-4 focus:ring-primary/10 pl-11 sm:pl-12 pr-12 py-3 sm:py-4 rounded-xl sm:rounded-2xl outline-none transition-all font-bold text-secondary-dark appearance-none cursor-pointer h-[50px] sm:h-[56px] text-sm sm:text-base">
-                      <option>Formation Entreprenariat</option>
                       <option>Formation Bureautique</option>
+                      <option>Formation Entreprenariat</option>
                       <option>Gestion & Comptabilité</option>
                       <option>Autre</option>
                     </select>

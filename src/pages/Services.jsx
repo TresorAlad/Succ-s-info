@@ -33,8 +33,7 @@ const Services = () => {
         { name: "Emails & Communication", desc: "Créez et gérez vos comptes e-mails professionnels facilement." }
       ],
       buttons: [
-        { label: "Me former", icon: "school", to: "/formation", primary: true },
-        { label: "Demander un Devis", icon: "event_available", to: "/contact", primary: false }
+        { label: "Me former", icon: "school", to: "/formation", primary: true }
       ]
     },
     {
@@ -86,7 +85,7 @@ const Services = () => {
           <div className="sm:hidden flex overflow-hidden w-full relative">
             <div className="absolute top-0 left-0 w-8 h-full bg-gradient-to-r from-white to-transparent z-10"></div>
             <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-white to-transparent z-10"></div>
-            
+
             <div className="flex items-center gap-8 w-max text-xs font-bold uppercase tracking-[0.2em] text-gray-400 py-2 animate-[marquee_20s_linear_infinite]">
               {[
                 { icon: "verified", color: "text-primary", label: "Expertise" },
@@ -138,7 +137,7 @@ const Services = () => {
                 </div>
 
                 {/* Mobile Accordion Toggle */}
-                <button 
+                <button
                   onClick={() => setActiveMobileCat(activeMobileCat === cat.id ? null : cat.id)}
                   className="lg:hidden mt-8 flex items-center justify-between w-full bg-blue-50/50 p-5 rounded-2xl font-bold text-primary border border-blue-100 hover:bg-blue-50 transition-all active:scale-95 shadow-sm"
                 >
