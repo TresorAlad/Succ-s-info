@@ -56,7 +56,7 @@ const Footer = () => {
               Maintenance informatique, solutions digitales et formation d'excellence à Hahotoé, Togo.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-primary transition-all text-gray-400 flex items-center gap-3 bg-white/5 p-2 px-4 rounded-xl border border-white/10 hover:border-primary/40 group shadow-sm">
+              <a href="https://web.facebook.com/p/Le-Succes-Informatique-Centre-De-Formation-a-Vogan-Hahotoe-100065194166423/?_rdc=1&_rdr" className="hover:text-primary transition-all text-gray-400 flex items-center gap-3 bg-white/5 p-2 px-4 rounded-xl border border-white/10 hover:border-primary/40 group shadow-sm">
                 <Icon name="facebook" size="18px" className="group-hover:scale-110 transition-transform" />
                 <span className="text-[10px] font-bold uppercase tracking-widest text-white group-hover:text-primary transition-colors">Suivez-nous</span>
               </a>
@@ -81,8 +81,8 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div className="text-center sm:text-left">
+          {/* Contact Info - Hidden on mobile as requested */}
+          <div className="hidden sm:block text-center sm:text-left">
             <h4 className="text-base font-black uppercase tracking-widest text-white mb-8 border-l-4 border-accent-orange pl-4">Contact direct</h4>
             <ul className="space-y-5">
               <li className="flex items-center justify-center sm:justify-start gap-4 group">
