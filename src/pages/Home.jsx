@@ -15,7 +15,7 @@ const Home = () => {
           <div className="absolute inset-0 opacity-[0.02] bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')]"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center pt-12 lg:pt-40 pb-12 sm:pb-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center pt-12 lg:pt-40 pb-4 sm:pb-8 text-center">
 
           {/* Title */}
           <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-black mb-4 sm:mb-8 leading-[1.05] tracking-tighter">
@@ -29,7 +29,7 @@ const Home = () => {
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 lg:gap-6 justify-center items-center mb-10">
+          <div className="flex flex-col sm:flex-row gap-3 lg:gap-6 justify-center items-center mb-4">
             <Link
               to="/services"
               className="w-full sm:w-auto bg-primary hover:bg-blue-600 text-white px-8 py-3.5 rounded-full font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 transition-all shadow-xl shadow-blue-500/20 active:scale-95"
