@@ -37,18 +37,33 @@ const Services = () => {
       ]
     },
     {
-      id: "it",
-      title: "Prestations Informatiques",
-      icon: "laptop_mac",
-      color: "green",
+      id: "filieres",
+      title: "Nos Filières",
+      icon: "menu_book",
+      color: "purple",
       items: [
-        { name: "Vente de Matériel", desc: "Conseils et vente d'équipements informatiques neufs et d'occasion." },
-        { name: "Création Web Vitrine", desc: "Présentez votre activité au monde avec un site élégant et moderne." },
-        { name: "Support à Distance", desc: "Assistance rapide par prise de main à distance pour vos urgences." },
-        { name: "Conseils & Stratégie", desc: "Accompagnement dans le choix de vos futures solutions numériques." }
+        { name: "Secrétariat Bureautique", desc: "Formation pratique et complète aux métiers de l'administration et du secrétariat." },
+        { name: "Formation Modulaire", desc: "Des modules de formation à la carte pour s'adapter à votre emploi du temps et vos objectifs." },
+        { name: "Sérigraphie & Infographie", desc: "Maîtrisez la création graphique et les techniques professionnelles d'impression." },
+        { name: "Stage & Divers", desc: "Offres de stages d'immersion professionnelle et de perfectionnement pour tous." }
       ],
       buttons: [
-        { label: "Demander un Devis", icon: "event_available", to: "/contact", primary: true }
+        { label: "Voir nos Filières", icon: "visibility", to: "/contact", primary: true }
+      ]
+    },
+    {
+      id: "autres-services",
+      title: "Autres Services",
+      icon: "print",
+      color: "pink",
+      items: [
+        { name: "Photocopie & Scan", desc: "Services rapides pour vos besoins de duplication et numérisation de documents." },
+        { name: "Faire-part & Invitations", desc: "Création et impression de cartes d'invitation élégantes pour vos événements." },
+        { name: "Design de Logos & Carnets", desc: "Conception de logos d'entreprise et impression de carnets sur mesure." },
+        { name: "Photos Passport", desc: "Réalisation de photos passeport conformes avec impression express." }
+      ],
+      buttons: [
+        { label: "Nous contacter", icon: "call", to: "/contact", primary: true }
       ]
     }
   ];
