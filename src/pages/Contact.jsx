@@ -128,6 +128,7 @@ const Contact = () => {
                     <option>Solutions IT & Web</option>
                     <option>Vente de Matériel</option>
                     <option>Demande de partenariat</option>
+                    <option>Autres</option>
                   </select>
                   <div className="absolute inset-y-0 right-0 pr-5 flex items-center pointer-events-none text-gray-400 z-10">
                     <Icon name="expand_more" size="18px" />
