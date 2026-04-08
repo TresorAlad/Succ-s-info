@@ -117,9 +117,6 @@ export default async function handler(req, res) {
         <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f8fafc; padding: 40px 20px;">
           <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);">
             <div style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); padding: 35px; text-align: center;">
-              <div style="display: inline-block; background-color: rgba(255, 255, 255, 0.2); padding: 10px; border-radius: 12px; margin-bottom: 15px;">
-                <span style="font-size: 30px;">✉️</span>
-              </div>
               <h1 style="color: #ffffff; margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.025em;">Nouvel Abonné !</h1>
               <p style="color: #D1FAE5; margin: 8px 0 0; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em;">SuccesInfo Newsletter</p>
             </div>
