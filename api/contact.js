@@ -144,8 +144,8 @@ export default async function handler(req, res) {
       to: process.env.SMTP_EMAIL,
       replyTo: email,
       subject: type === 'newsletter' 
-        ? `🗞️ Nouvel Abonné Newsletter : ${email}` 
-        : (type === 'inscription' ? `📝 Inscription : ${subject} - ${name}` : `✉️ Contact : ${subject} - ${name}`),
+        ? ` Nouvel Abonné Newsletter : ${email}` 
+        : (type === 'inscription' ? ` Inscription : ${subject} - ${name}` : `Contact : ${subject} - ${name}`),
       html: htmlContent,
     };
 
