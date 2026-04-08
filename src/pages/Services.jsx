@@ -38,7 +38,7 @@ const Services = () => {
     },
     {
       id: "filieres",
-      title: "Nos Filières",
+      title: "Filières",
       icon: "menu_book",
       color: "purple",
       items: [
@@ -133,7 +133,7 @@ const Services = () => {
                 </div>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-secondary-dark mb-6 sm:mb-8 leading-tight">{cat.title}</h2>
                 <p className="text-gray-500 text-base sm:text-lg leading-relaxed mb-8 sm:mb-10 font-medium">
-                  Solutions dédiées à la <span className="text-primary font-bold font-display">{cat.title.toLowerCase()}</span> pour vous garantir un environnement numérique stable et performant.
+                  Solutions dédiées aux <span className="text-primary font-bold font-display">{cat.title.toLowerCase()}</span> pour vous garantir un environnement numérique stable et performant.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   {cat.buttons.map((btn, bi) => (
